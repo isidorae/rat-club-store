@@ -1,0 +1,53 @@
+/* footer */
+a {
+    color: white !important;
+    text-decoration: none !important;
+    font-weight: bold;
+}
+
+
+footer {
+    margin:0  auto;
+    border-top: thin solid var(--border-pink);
+    box-shadow: 0rem 0.05rem 0.8rem var(--lighter-pink);
+}
+
+.footer-logo {
+    height: 5rem;
+    width: auto;
+}
+
+.store-footer-intro {
+    color: white;
+}
+
+h3 {
+    font-family: 'Shrikhand', cursive;
+    color:white !important;
+}
+
+.legal-footer {
+    margin:0 1rem 0 1rem;
+    display:flex;
+    flex-direction: column;
+    font-weight:bold;
+}
+
+a:hover {
+    color:#57c3f5 !important;
+}
+
+
+.copyright-p {
+    text-align: center;
+    color: white;
+}
+
+@media (max-width: 770px) {
+    .legal-footer,
+    .social-footer {
+        margin-top: 1rem !important;
+    }
+
+    
+}

@@ -1,0 +1,65 @@
+/* **************** Custom Properties **************** */
+:root{
+    --first-color: #c0f710;
+    --bg-first-color: #8a2be2;
+    --bg-first-color-hover: #b163fb;
+    --border-pink:#e45cc4; 
+    --lighter-pink: rgba(238, 181, 221, 0.8);
+    --hover-link-color: #57c3f5;
+}
+
+
+
+/************* styles ************/
+.nav-logoimg {
+    height: 4rem;
+    width: auto;
+}
+
+.navlinks-contain {
+    font-family: 'Shrikhand', cursive;
+}
+
+.dropdowntext {
+    color: white !important;
+}
+
+/************ reset bootstrap styles *********/
+.bg-body-tertiary {
+    --bs-bg-opacity: 0 !important;
+    background-color: var(--bg-first-color) !important;
+    border-bottom: thin solid var(--border-pink);
+    box-shadow: 0rem 0.05rem 0.8rem var(--lighter-pink);
+}
+
+.dropdown-menu {
+    background-color: var(--bg-first-color) !important;
+}
+
+.dropdown-item:hover {
+    background-color: var(--bg-first-color-hover) !important;
+}
+
+.nav-link::after {
+    color: white;
+}
+
+.navbar-toggler {
+    padding: var(--bs-navbar-toggler-padding-y) var(--bs-navbar-toggler-padding-x);
+    font-size: var(--bs-navbar-toggler-font-size);
+    line-height: 1;
+    color: var(--bs-navbar-color);
+    background-color: var(--bg-first-color-hover) !important;
+    border: medium solid white !important;
+    border-radius: var(--bs-navbar-toggler-border-radius);
+    transition: var(--bs-navbar-toggler-transition);
+}
+
+.navbar-toggler:focus {
+    background-color: var(--hover-link-color) !important;
+    border: medium solid white !important;
+    text-decoration: underline;
+    outline: 0;
+    box-shadow: 1 1 1 var(--hover-link-color) !important;
+
+}

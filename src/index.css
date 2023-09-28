@@ -1,0 +1,19 @@
+/* **************** Custom Properties **************** */
+:root{
+    --first-color: #c0f710;
+    --bg-first-color: #8a2be2;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: white !important;
+    background-color: var(--bg-first-color) !important;
+}
+
+p, a {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2, h3, a {
+    font-family: 'Shrikhand', cursive;
+}

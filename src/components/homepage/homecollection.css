@@ -1,0 +1,12 @@
+
+.home-collection-container {
+    padding: 2rem;
+    border: medium solid purple;
+}
+
+
+.home-collection-grid-img {
+    width: 250px;
+    height: 250px;
+    background-color: aqua;
+}
