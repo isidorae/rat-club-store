@@ -8,8 +8,8 @@ a {
 
 footer {
     margin:0  auto;
-    border-top: thin solid var(--border-pink);
-    box-shadow: 0rem 0.05rem 0.8rem var(--lighter-pink);
+    /* border-top: thin solid var(--border-pink);
+    box-shadow: 0rem 0.05rem 0.8rem var(--lighter-pink); */
 }
 
 .footer-logo {

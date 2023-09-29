@@ -9,7 +9,7 @@ export default function SectionTwo() {
                         Este lugar esta dedicado exclusivamente para ell@s!
                         Para mejorar su calidad de vida a través de los
                         mejores alimentos, juguetes que no soltarán, objetos
-                        para que descanses de forma cómoda y accesorios que nunca estan
+                        para que descansen de forma cómoda y accesorios que nunca estan
                         demas. 
                     </p>
                     <img className="rat-love-img" src="./homepage-imgs/ratloveimg.png" alt="" />

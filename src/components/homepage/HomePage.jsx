@@ -9,7 +9,7 @@ export default function HomePage() {
         <>
                <HeroImg/>
                <SectionTwo/>
-               {/* <HomeCollection/> */}
+               <HomeCollection/>
         </>
     )
 

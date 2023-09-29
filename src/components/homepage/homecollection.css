@@ -1,12 +1,60 @@
 
 .home-collection-container {
     padding: 2rem;
-    border: medium solid purple;
+    /* border: medium solid purple; */
+    border-top: medium solid purple;
+    border-top: thin solid var(--border-pink);
+    box-shadow: 0rem 0.05rem 0.8rem var(--lighter-pink);
 }
 
 
 .home-collection-grid-img {
     width: 250px;
     height: 250px;
-    background-color: aqua;
+    border-radius: 0.5rem;
+    border: 4px solid rgb(255, 156, 197);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.home-collection-grid-img:hover {
+    border: 4px solid rgb(71, 255, 65);
+    box-shadow: 0rem 0.05rem 0.8rem rgb(71, 4, 90);
+}
+
+.accesories-card {
+    background-image: url(../../public/collection-imgs/accesoriescollection.jpg);
+    background-size: contain;
+    overflow: hidden;
+    background-position: 0 10px;
+}
+
+.hogar-card{
+    background-image: url(../../public/collection-imgs/hogarcollection.jpg);
+    background-size: contain;
+    overflow: hidden;
+}
+
+.food-card {
+    background-image: url(../../public/collection-imgs/foodcollection.jpg);
+    background-size: contain;
+    overflow: hidden;
+    background-position: 0 15px;
+}
+
+.toys-card {
+    background-image: url(../../public/collection-imgs/toyscollection.jpg);
+    background-size: contain;
+    overflow: hidden;
+    background-position: 0 5px;
+}
+
+.opacity-bg-collection {
+    height: inherit;
+    width:inherit;
+    background: rgb(203,64,255);
+    background: linear-gradient(297deg, rgba(203,64,255,0.3) 0%, rgba(66,90,254,0.3) 50%, rgba(19,18,89,0.3) 100%);
+}
+
+.title-collect {
+    background-color: rgba(0, 0, 0, 0.9);
 }

@@ -24,9 +24,51 @@
     color: white !important;
 }
 
+.cart-navbar-button {
+    color:var(--bg-first-color);
+    background-color: var(--hover-link-color);
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    border: none;
+    position: relative;
+}
+
+.cart-product-num {
+    font-family: 'Shrikhand', cursive;
+    background-color: rgb(214, 49, 49);
+    height: 1.5rem;
+    width: 1.5rem;
+    border: thin solid rgb(214, 49, 49);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translate(25%, 25%);
+}
+
+.login-navbar-button {
+    color:var(--bg-first-color);
+    background-color: var(--hover-link-color);
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    border: none;
+}
+
+.login-navbar-button:hover {
+    background-color: #feaef8;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    border: none;
+}
+
 /************ reset bootstrap styles *********/
-.bg-body-tertiary {
-    --bs-bg-opacity: 0 !important;
+.bg-body-purple {
     background-color: var(--bg-first-color) !important;
     border-bottom: thin solid var(--border-pink);
     box-shadow: 0rem 0.05rem 0.8rem var(--lighter-pink);
