@@ -1,4 +1,5 @@
 import './sectiontwo.css'
+import ratLoveImg from '/public/homepage-imgs/ratloveimg.png'
 
 export default function SectionTwo() {
 
@@ -12,7 +13,7 @@ export default function SectionTwo() {
                         para que descansen de forma cómoda y accesorios que nunca estan
                         demas. 
                     </p>
-                    <img className="rat-love-img" src="./homepage-imgs/ratloveimg.png" alt="" />
+                    <img className="rat-love-img" src={ratLoveImg} alt="" />
                 </div>
             </section>
 

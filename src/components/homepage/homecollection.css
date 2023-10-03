@@ -22,27 +22,27 @@
 }
 
 .accesories-card {
-    background-image: url(../../public/collection-imgs/accesoriescollection.jpg);
+    background-image: url(../collection-imgs/accesoriescollection.jpg);
     background-size: contain;
     overflow: hidden;
     background-position: 0 10px;
 }
 
 .hogar-card{
-    background-image: url(../../public/collection-imgs/hogarcollection.jpg);
+    background-image: url(../collection-imgs/hogarcollection.jpg);
     background-size: contain;
     overflow: hidden;
 }
 
 .food-card {
-    background-image: url(../../public/collection-imgs/foodcollection.jpg);
+    background-image: url(../collection-imgs/foodcollection.jpg);
     background-size: contain;
     overflow: hidden;
     background-position: 0 15px;
 }
 
 .toys-card {
-    background-image: url(../../public/collection-imgs/toyscollection.jpg);
+    background-image: url(../public/collection-imgs/toyscollection.jpg);
     background-size: contain;
     overflow: hidden;
     background-position: 0 5px;
