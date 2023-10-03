@@ -1,19 +1,12 @@
 import './sectiontwo.css'
-import ratLoveImg from '/public/homepage-imgs/ratloveimg.png'
 
-export default function SectionTwo() {
+export default function SectionTwo({text, img, alt}) {
 
     return(
         <section>
                 <div className="section-two-homepage d-flex flex-row align-items-center flex-wrap p-4">
-                    <p>Amamos las ratas por sobre todas las cosas!
-                        Este lugar esta dedicado exclusivamente para ell@s!
-                        Para mejorar su calidad de vida a través de los
-                        mejores alimentos, juguetes que no soltarán, objetos
-                        para que descansen de forma cómoda y accesorios que nunca estan
-                        demas. 
-                    </p>
-                    <img className="rat-love-img" src={ratLoveImg} alt="" />
+                    <p>{text}</p>
+                    <img className="rat-love-img" src={img} alt={alt} />
                 </div>
             </section>
 

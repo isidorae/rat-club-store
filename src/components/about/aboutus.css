@@ -1,0 +1,45 @@
+
+
+.about-container {
+    padding: 4rem;
+    margin: 0 auto;
+
+}
+
+.about-container img {
+    width: 10rem;
+    border: medium solid gray;
+    border-radius: 50%;
+    background-color: aliceblue;
+    will-change: filter;
+    transition: filter 300ms;
+}
+
+.about-container img:hover {
+    filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+.about-borderbox {
+    box-shadow: 0rem 0.05rem 0.8rem var(--lighter-pink);
+}
+
+
+
+
+
+@media (min-width: 825px) {
+    .about-container {
+        max-width: 70vw;
+
+    }
+}
+
+@media (max-width: 600px) {
+    .about-container {
+        padding: 3rem;
+
+    }
+    /* .about-container img {
+        width: 6rem;
+    } */
+}
