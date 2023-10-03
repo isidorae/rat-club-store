@@ -42,7 +42,7 @@
 }
 
 .toys-card {
-    background-image: url(../public/collection-imgs/toyscollection.jpg);
+    background-image: url(../collection-imgs/toyscollection.jpg);
     background-size: contain;
     overflow: hidden;
     background-position: 0 5px;

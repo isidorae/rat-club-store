@@ -20,7 +20,7 @@ export default function NavbarComp() {
                 <Nav.Link as={ Link } to='/' className="fs-5 fw-bold text-white me-3">Inicio</Nav.Link>
                 <Nav.Link as={ Link } to='/about' className="fs-5 fw-bold text-white me-3">Acerca de</Nav.Link>
                 <NavDropdown title={ <span as={ Link } to='/store' className="fs-5 text-white">Tienda</span>} id="basic-nav-dropdown">
-                <NavDropdown.Item as={ Link } to='/store' className="fs-5 fw-bold text-white">TODAS</NavDropdown.Item>
+                <NavDropdown.Item as={ Link } to='/store' className="fs-5 fw-bold text-white">Colecciones</NavDropdown.Item>
                   <NavDropdown.Item as={ Link } to='/store/accesorios' className="fw-bold text-white">Accesorios</NavDropdown.Item>
                   <NavDropdown.Item as={ Link } to='/store/alimentos' className="fw-bold text-white">Alimentos</NavDropdown.Item>
                   <NavDropdown.Item as={ Link } to='/store/juguetes' className="fw-bold text-white" >Juguetes</NavDropdown.Item>
