@@ -19,7 +19,11 @@ export default function HomePage() {
                img={ratLoveImg}
                alt="rata rat-love frutilla"
                />
-               <HomeCollection/>
+               <div className="box-shadow-container">
+               <HomeCollection
+               title="Colecciones"
+               />
+               </div>
         </>
     )
 

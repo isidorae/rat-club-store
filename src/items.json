@@ -1,0 +1,46 @@
+{
+    "toys": [
+        {
+            "name": "Queso",
+            "price": 4900
+        },
+        {
+            "name": "Queso",
+            "price": 4900
+        }
+    ],
+    "accesories": [
+        {
+            "name": "bufanda",
+            "price": 2000
+        },
+        {
+            "name": "bufanda",
+            "price": 2000
+        }
+    ],
+    "hogar": [
+        {
+            "name": "columpio",
+            "price": 3000
+        },
+        {
+            "name": "columpio",
+            "price": 3000
+        }
+    ],
+    "food": [
+        {
+            "name": "mizuri",
+            "price": 5000
+        },
+        {
+            "name": "mizuri",
+            "price": 5000
+        }
+    ]
+
+
+
+
+}

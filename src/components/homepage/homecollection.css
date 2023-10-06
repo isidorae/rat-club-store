@@ -1,10 +1,6 @@
 
 .home-collection-container {
     padding: 2rem;
-    /* border: medium solid purple; */
-    border-top: medium solid purple;
-    border-top: thin solid var(--border-pink);
-    box-shadow: 0rem 0.05rem 0.8rem var(--lighter-pink);
 }
 
 

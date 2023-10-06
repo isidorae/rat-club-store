@@ -6,14 +6,14 @@ import React from 'react';
 
 import CollectionCard from './CollectionCard';
 
-export default function HomeCollection() {
+export default function HomeCollection({title}) {
 
 
     return(
         <>
         <div className="home-collection-container pb-5">
             <section>
-                <h1 className="text-center">Colleciones</h1>
+                <h1 className="text-center">{title}</h1>
             </section>
             <Container className=" d-flex justify-content-center align-items-center">
                 <Row className="gap-4">

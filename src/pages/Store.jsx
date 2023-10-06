@@ -1,7 +1,11 @@
+import StoreCollections from "../components/tienda/StoreCollections"
+
 export default function Store() {
 
     return (
-        <h1>tienda</h1>
+        <>
+        <StoreCollections/>
+        </>
     )
 
 }
