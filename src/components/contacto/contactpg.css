@@ -1,0 +1,111 @@
+.contact-pg-container {
+    min-height: 80vh;
+    box-shadow: 0rem 0.05rem 0.8rem var(--lighter-pink);
+}
+
+.contact-form-container {
+    width: 25rem;
+    height: 35rem;
+    margin: 0 auto;
+    margin-top: 1rem;
+    border: medium solid white;
+    background-color: rgb(189, 46, 89);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: box-shadow 300ms ease-in-out;
+    
+
+}
+
+.contact-form-container:hover {
+    box-shadow: 0rem 0.1rem 1rem var(--lighter-pink);
+}
+
+.contact-form-input,
+.contact-textarea {
+    width: 20rem;
+    margin-top: 0.3rem;
+    border: none;
+    border-radius: 3px;
+    color: rgb(140, 0, 255);
+    font-weight: bold;
+}
+
+.contact-form-input:focus,
+.contact-textarea:focus {
+    color: rgb(140, 0, 255);
+    font-weight: bold;
+    outline: 2px solid rgb(44, 68, 188);
+}
+
+.contact-form-input::placeholder {
+    font-weight: bold; 
+}
+
+.contact-textarea {
+    height: 15rem;
+    border-radius: 3px;
+}
+
+.contact-textarea:focus {
+    color: rgb(140, 0, 255);
+    outline: 2px solid rgb(44, 68, 188);
+}
+
+.contact-textarea::placeholder {
+    font-weight: bold;
+}
+
+
+
+
+.contact-form-btn {
+    width: 20rem;
+    height: 2rem;
+    font-weight: bold;
+    color: white;
+    border: 2px solid white;
+    background-color: transparent;
+    border-radius: 5px;
+    margin-top: 0rem;
+    transition: background-color 500ms ease-in-out;
+    transition: color 400ms ease-in-out;
+}
+
+.contact-form-btn:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    color:rgb(189, 46, 89);
+}
+
+/* CONTACTO INFO  */
+
+.contact-pg-info {
+    height: 17rem;
+    width: 17rem;
+    border: medium solid white;
+    background-color: transparent;
+    outline: 5px solid rgb(150, 218, 247);
+    border-radius: 50%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    will-change: filter;
+    transition: filter 300ms;
+}
+
+.contact-pg-info:hover {
+    filter: drop-shadow(0 0 1.5em #a6f8f1);
+}
+
+@media (max-width: 450px) {
+    .contact-form-container {
+        width: 22rem;
+        height: 32rem;
+        margin-bottom: 1.5rem;
+
+    }
+
+}
+

@@ -19,7 +19,7 @@ function App() {
     <NavbarComp/>
     <Routes>
       <Route path='/' element={< Home/>}></Route>
-      <Route path='/contacto' element={< Contact/>}></Route>
+      <Route path='/contact' element={< Contact/>}></Route>
       <Route path='/about' element={< About/>}></Route>
       <Route path='/store' element={< Store/>}></Route>
       <Route path='/store/:productCollection' element={< ProductCollection />}></Route>

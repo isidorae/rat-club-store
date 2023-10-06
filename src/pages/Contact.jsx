@@ -1,8 +1,13 @@
+import Contacto from "../components/contacto/Contacto"
 
-export default function Contacto() {
+
+export default function Contact() {
 
     return (
-        <h1>Contacto</h1>
+        <>
+        <Contacto />
+        </>
+        
     )
 
 }
