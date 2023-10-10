@@ -23,7 +23,7 @@ function App() {
       <Route path='/about' element={< About/>}></Route>
       <Route path='/store' element={< Store/>}></Route>
       <Route path='/store/:productCollection' element={< ProductCollection />}></Route>
-      <Route path='/product' element={< Product />}></Route>
+      <Route path='/product/:productCollection/:productID' element={< Product/>}></Route>
       <Route path='/*' element={< Navigate to='/'/>} ></Route>
     </Routes>
     <Footer/>

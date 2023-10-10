@@ -1,42 +1,78 @@
 {
     "toys": [
         {
+            "id": 1,
             "name": "Queso",
             "price": 4900
         },
         {
+            "id": 2,
             "name": "Queso",
             "price": 4900
         }
     ],
     "accesories": [
         {
+            "id": 1,
             "name": "bufanda",
             "price": 2000
         },
         {
+            "id": 2,
             "name": "bufanda",
             "price": 2000
         }
     ],
     "hogar": [
         {
-            "name": "columpio",
-            "price": 3000
+            "id": 1,
+            "name": "Casa Coco",
+            "price": 9000,
+            "img": "https://res.cloudinary.com/drd6awxrl/image/upload/v1696796693/rat-club-catalogue/hogar/casa_de_coco_ubqkf8.png"
+        },
+        {   
+            "id": 2,
+            "name": "Casa Coco",
+            "price": 9000,
+            "img": "https://res.cloudinary.com/drd6awxrl/image/upload/v1696796693/rat-club-catalogue/hogar/casa_de_coco_ubqkf8.png"
         },
         {
-            "name": "columpio",
-            "price": 3000
+            "id": 3,
+            "name": "Casa Coco",
+            "price": 9000,
+            "img": "https://res.cloudinary.com/drd6awxrl/image/upload/v1696796693/rat-club-catalogue/hogar/casa_de_coco_ubqkf8.png"
+        },
+        {   
+            "id": 4,
+            "name": "Casa Coco",
+            "price": 9000,
+            "img": "https://res.cloudinary.com/drd6awxrl/image/upload/v1696796693/rat-club-catalogue/hogar/casa_de_coco_ubqkf8.png"
         }
     ],
     "food": [
         {
+            "id": 1,
             "name": "mizuri",
-            "price": 5000
+            "price": 5000,
+            "img": "https://res.cloudinary.com/drd6awxrl/image/upload/v1696796696/rat-club-catalogue/food/snack_pavo_caldito_c67okw.jpg"
         },
         {
+            "id": 2,
             "name": "mizuri",
-            "price": 5000
+            "price": 5000,
+            "img": "https://res.cloudinary.com/drd6awxrl/image/upload/v1696796696/rat-club-catalogue/food/snack_pavo_caldito_c67okw.jpg"
+        },
+        {   
+            "id": 3,
+            "name": "mizuri",
+            "price": 5000,
+            "img": "https://res.cloudinary.com/drd6awxrl/image/upload/v1696796696/rat-club-catalogue/food/snack_pavo_caldito_c67okw.jpg"
+        },
+        {
+            "id": 4,
+            "name": "mizuri",
+            "price": 5000,
+            "img": "https://res.cloudinary.com/drd6awxrl/image/upload/v1696796696/rat-club-catalogue/food/snack_pavo_caldito_c67okw.jpg"
         }
     ]
 

@@ -12,7 +12,9 @@ export default function Contacto() {
         <div className="contact-pg-container d-flex align-items-center justify-content-center">
             <Container>
                 <Row>
-                    <Col className="order-1 order-md-0 mb-5"><ContactForm/></Col>
+                    <Col className="order-1 order-md-0 mb-5">
+                        <ContactForm/>
+                    </Col>
                     <Col className="d-flex align-items-center justify-content-center justify-content-md-start">
                         <div className="m-5 contact-pg-info d-flex flex-column align-items-center justify-content-center">
                         <span className="fs-1">🐀🐭🐁</span>
