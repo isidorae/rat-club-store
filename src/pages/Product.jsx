@@ -13,20 +13,25 @@ export default function Product() {
     let itemData;
     console.log(items.accesories)
 
-
-    if(productCollection === "accesorios"){
-        itemData = items.accesories
+    //para el breadcrumb
+    switch(productCollection) {
+        case "alimentos":
+        {itemData = items.food}
+        break;
+        case "accesorios":
+        {itemData = items.accesories}
+        break;
+        case "juguetes":
+        {itemData = items.toys}
+        break;
+        case "hogar":
+        {itemData = items.hogar}
+        break;
+        default:
+        {console.log("error getting productCollection")}
     }
-    if(productCollection === "hogar"){
-        itemData = items.hogar
-    }
-    if(productCollection === "alimentos"){
-        itemData = items.food
-    }
-    if(productCollection === "juguetes"){
-        itemData = items.toys
-    }
-
+    
+    //encontrar producto individual a mostrar
     const productIndex = itemData.findIndex(item => {
         return item.id == productID
     })

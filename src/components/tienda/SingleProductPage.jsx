@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function SingleProductPage({ singleProductObj, productCollection}) {
 
-  const {name, price, img } = singleProductObj
+  const {name, price, img, id, description } = singleProductObj
 
   console.log(productCollection)
   return (
@@ -14,7 +14,8 @@ export default function SingleProductPage({ singleProductObj, productCollection}
             <nav>
                 <Link as={Link} to="/">inicio / </Link>
                 <Link as={Link} to="/store">colecciones / </Link>
-                <Link as={Link} to={`/store/${productCollection}`}>{productCollection}</Link>
+                <Link as={Link} to={`/store/${productCollection}`}>{productCollection} / </Link>
+                <Link as={Link} to={`/product/${productCollection}/${id}`}>{name}</Link>
             </nav>
         </div>
       <div className="m-5">
@@ -34,11 +35,7 @@ export default function SingleProductPage({ singleProductObj, productCollection}
                 <h2>{name}</h2>
                 <p>${price}</p>
                 <p>
-                  descripcion del producto Lorem ipsum dolor sit amet
-                  consectetur, adipisicing elit. Perspiciatis aliquid ex
-                  impedit, eum repellat assumenda, saepe placeat quae, explicabo
-                  voluptas nam animi voluptatibus? Repudiandae numquam porro
-                  soluta similique nesciunt architecto.
+                 {description}
                 </p>
               </div>
               {/* add to cart button */}

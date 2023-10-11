@@ -9,17 +9,24 @@ export default function ProductsPage({productCollection}) {
     let data;
     console.log(productCollection)
 
-    if(`${productCollection}` === "alimentos") {
-        data = items.food
-    }
-    if(`${productCollection}` === "accesorios") {
-        data = items.accesories
-    }
-    if(`${productCollection}` === "juguetes") {
-        data = items.toys
-    }
-    if(`${productCollection}` === "hogar") {
-        data = items.hogar
+    //desde database - - > en vez de cargar data = items.food; hacemos fetch
+    // de url render.com/store/:collection ... data va a ser igual al fetch de eso.. 
+
+    switch(productCollection) {
+        case "alimentos":
+        {data = items.food}
+        break;
+        case "accesorios":
+        {data = items.accesories}
+        break;
+        case "juguetes":
+        {data = items.toys}
+        break;
+        case "hogar":
+        {data = items.hogar}
+        break;
+        default:
+        {console.log("error getting productCollection")}
     }
     
 
@@ -27,7 +34,10 @@ export default function ProductsPage({productCollection}) {
         <div className="products-page-container">
         <Container>
             <Row>
-                <ProductCard data={data} productCollection={productCollection}/>
+                <ProductCard
+                data={data}
+                productCollection={productCollection}
+                />
             </Row>
         </Container>
         </div>

@@ -1,0 +1,61 @@
+.sign-in-container-parent {
+    min-height: 100vh;
+}
+
+.sign-in-container {
+width: 21rem;
+padding: 2rem;
+border: medium solid rgb(248, 223, 223);
+border-radius: 5%;
+margin: 0 auto;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+transition: box-shadow 500ms ease-in-out;
+
+}
+
+.sign-in-container:hover{
+    box-shadow: 0.1rem 0.1rem 0.8rem var(--lighter-pink); 
+
+
+}
+ 
+.signin-breadcrumb {
+    position: relative;
+    left: -40px;
+    top: -20px;
+}
+
+.signin-logo {
+    height: 4rem;
+}
+
+.signin-input,
+.signin-input-pass {
+    height: 2rem;
+    margin: 0.2rem;
+    border: none;
+    border-radius: 3px;
+}
+
+.signin-input:focus,
+.signin-input-pass:focus {
+    outline: 2px solid rgb(255, 139, 61);
+}
+
+.continue-signin-btn {
+    background: linear-gradient(50deg, rgba(134,65,233,0.7) 0%, rgba(87,255,204,0.7) 63%, rgba(255,79,232,0.7) 89%);
+    color: white;
+    text-shadow: 0.15rem 0.2rem 0.5rem rgb(74, 46, 167);
+    margin-top: 0.5rem;
+    padding: 0.7rem;
+    font-weight: bold;
+    border: 3px solid rgb(58, 59, 129);
+    border-radius: 1.3rem;
+}
+
+.continue-signin-btn:hover {
+    border: 3px solid rgb(255, 161, 73);
+}
