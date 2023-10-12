@@ -12,10 +12,11 @@ import Footer from './components/Footer';
 import ProductCollection from './pages/ProductCollection';
 import SignIn from './pages/SignIn'
 import UserProfile from './pages/UserProfile'
+import CartPage from './pages/CartPage';
 
 import { useContext } from "react";
 import SignInContext from './context/SignInContext'
-
+import { CartProvider } from './context/CartContext';
 
 
 function App() {
@@ -25,6 +26,7 @@ const { signIn } = useContext(SignInContext)
 console.log(signIn)
   return (
     <>
+    <CartProvider>
     {signIn
     ? (<Routes>
        <Route path='/' element={< SignIn/>}></Route>
@@ -41,11 +43,13 @@ console.log(signIn)
       <Route path='/store/:productCollection' element={< ProductCollection />}></Route>
       <Route path='/product/:productCollection/:productID' element={< Product/>}></Route>
       <Route path='/signin' element={< SignIn/>}></Route>
+      <Route path='/carrito' element={< CartPage/>}></Route>
       <Route path='/myprofile' element={< UserProfile/>}></Route>
       <Route path='/*' element={< Navigate to='/'/>} ></Route>
     </Routes>
     <Footer/>
     </>)}
+    </CartProvider>
     </>
   )
 }

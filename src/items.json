@@ -45,28 +45,28 @@
     ],
     "accesories": [
         {
-            "id": 1,
+            "id": 7,
             "name": "Árnes rojo grueso",
             "price": 4500,
             "description": "El Arnés Grueso Exóticos-Rojo ofrece una forma segura, práctica y cómoda de pasear a tu pequeña mascota.",
             "img": "https://res.cloudinary.com/drd6awxrl/image/upload/v1696796692/rat-club-catalogue/accesories/arnesgruesorojo_lfb0hd.webp"
         },
         {
-            "id": 2,
+            "id": 8,
             "name": "Árnes verde",
             "price": 4000,
             "description": "arnés diseñado para pequeñas mascotas como Ratas, ratones, hurones. Se ajusta perfectamente al cuerpo de tu mascota. Ofrece una forma segura, práctica y cómoda de pasear a tu pequeña mascota.",
             "img": "https://res.cloudinary.com/drd6awxrl/image/upload/v1696796691/rat-club-catalogue/accesories/arnesverde_sv2ly3.webp"
         },
         {
-            "id": 3,
+            "id": 9,
             "name": "Árnes rayas",
             "price": 5000,
             "description": "set de arnés y correa especialmente diseñado para pequeñas mascotas. Te permitirá sacar de paseo a tu mascota pequeño/a, manteniéndola siempre segura. Los colores combinan muy bien, y los materiales son confortables y ligeros de llevar para la mascota.",
             "img": "https://res.cloudinary.com/drd6awxrl/image/upload/v1696796694/rat-club-catalogue/accesories/arnesrayas_dkdb20.webp"
         },
         {
-            "id": 4,
+            "id": 10,
             "name": "Transportador celeste",
             "price": 14990,
             "description": "Proporciona un refugio seguro y cómodo para los viajes de pequeños animales. Es compacto y tiene muchas características de diseño innovador para asegurar que su mascota viaja cómodamente y de forma segura. Fabricado con plástico resistente al masticado, el transportín está hecho para durar.",
@@ -75,49 +75,49 @@
     ],
     "hogar": [
         {
-            "id": 1,
+            "id": 11,
             "name": "Casa Coco",
             "price": 6700,
             "description": "Para jugar y también como refugio, a las mascotas pequeñas les encantará. Similar a un túnel satisface la naturaleza de la pequeña mascota como una cueva y hace que la mascota parezca estar en la naturaleza y sentirse segura. Con cáscara de coco natural, el nido es ecológico, duradero de usar y garantiza la salud y la seguridad de las mascotas.",
             "img": "https://res.cloudinary.com/drd6awxrl/image/upload/v1697035257/casa-coco_hqa5al.jpg"
         },
         {   
-            "id": 2,
+            "id": 12,
             "name": "Casa Algodón",
             "price": 5000,
             "description": "Hermoso y encantador diseño. Suave, cómodo y transpirable. Un lugar ideal para sus ratas, seguro y cálido, para dormir o jugar dentro.",
             "img": "https://res.cloudinary.com/drd6awxrl/image/upload/v1697035262/casa-algodon_woxfdd.png"
         },
         {
-            "id": 3,
+            "id": 13,
             "name": "Cama Soft",
             "price": 7500,
             "description": "Esta hamaca de felpa con forma de oso le da a tu encantadora rata una cabaña cálida y cómoda para descansar. Viene con almohadilla reemplazable, fácil de limpiar y lavar. Un lugar perfecto para su pequeño encantador en el frío invierno, seguro y cálido para que duerma o juegue dentro.",
             "img": "https://res.cloudinary.com/drd6awxrl/image/upload/v1696796691/rat-club-catalogue/hogar/cama_soft_picjab.png"
         },
         {   
-            "id": 4,
+            "id": 14,
             "name": "Micro Iglú Azul",
             "price": 3000,
             "description": "adorable escondite para tu amigo peludo y no tiene que estar en la nieve y el hielo para disfrutar de la calidez y la comodidad de su propio escondite de iglú de animales pequeños de Kaytee.",
             "img": "https://res.cloudinary.com/drd6awxrl/image/upload/v1696796686/rat-club-catalogue/hogar/microiglu_xcqm5u.webp"
         },
         {   
-            "id": 5,
+            "id": 15,
             "name": "Sustrato eco aloe",
             "price": 37000,
             "description": "El Asan PET ALOE 42 Lts Sustrato de Papel Ecológico es un sustrato ecológico para pequeñas mascotas 100% orgánica, reutilizable, no se aglomera, hasta un 45% de absorción, libre de polvo.",
             "img": "https://res.cloudinary.com/drd6awxrl/image/upload/v1696796686/rat-club-catalogue/hogar/sustrato_xhfgk6.webp"
         },
         {   
-            "id": 6,
+            "id": 16,
             "name": "Jaula hogar mansión",
             "price": 200000,
             "description": "La Jaula Mansión Gran Ferret es una de las jaulas con el mejor precio/espacio/calidad es algo a tener en cuenta, ideal para tener una pareja de ratas (o mas) con capacidad para todos sus complementos y juguetes que ellos necesitan en su interior. 5 pisos. Medidas: 79 x 52 x 140 cms. Ruedas para facilitar su transporte. Peso aproximado: 20 kgrs.",
             "img": "https://res.cloudinary.com/drd6awxrl/image/upload/v1696796687/rat-club-catalogue/hogar/jaula_mansion_vuv1wa.webp"
         },
         {   
-            "id": 7,
+            "id": 17,
             "name": "Hamaca Felpa Doble Capa",
             "price": 8000,
             "description": "Una elección perfecta para brindar a tus mascotas el máximo confort en invierno. Confeccionada con felpa gruesa de doble capa, esta hamaca saco de dormir ofrece un refugio de color sólido que tus ratas adorarán.",
@@ -126,42 +126,42 @@
     ],
     "food": [
         {
-            "id": 1,
+            "id": 18,
             "name": "Mazuri Premium",
             "price": 5990,
             "description": "formulada específicamente para estos animales sólo con ingredientes vegetales (libre de harina de pescado). Fórmula completa no requiere suplementación. Contenido neto: 900g.",
             "img": "https://res.cloudinary.com/drd6awxrl/image/upload/v1696796693/rat-club-catalogue/food/mazurit900g_ryysnu.webp"
         },
         {
-            "id": 2,
+            "id": 19,
             "name": "Palitos Topinambur",
             "price": 5000,
             "description": "Nutrilicioso,  son unos deliciosos snacks 100% naturales, de Palitos de Topinambur Naturalmente deshidratada muy nutritivo y sin químicos añadidos.Es un snack ideal para Conejos y Roedores. Contenido neto: 100g.",
             "img": "https://res.cloudinary.com/drd6awxrl/image/upload/v1696796694/rat-club-catalogue/food/palitos-de-topinambur_svgur2.webp"
         },
         {
-            "id": 3,
+            "id": 20,
             "name": "King Kong",
             "price": 5000,
             "description": " divertido juguete para mascotitas exóticas, en forma del famoso gorila gigante que captara la atencion de tu pequeña mascota.  Una adorable e innovadora manera de premiar a nuestros peluditos con increíbles snacks. Contenido neto: 50g.",
             "img": "https://res.cloudinary.com/drd6awxrl/image/upload/v1696796693/rat-club-catalogue/food/kiingkongsnack_osvdzm.webp"
         },
         {
-            "id": 4,
+            "id": 21,
             "name": "Patas de pollo",
             "price": 4500,
             "description": "Sabroso, nutritivo y duradero bocado natural hecho con un solo ingrediente y liofilizado para su conservación. Contenido neto: 150g.",
             "img": "https://res.cloudinary.com/drd6awxrl/image/upload/v1696796693/rat-club-catalogue/food/patasdepollodeshidratadas_bd7f8e.jpg"
         },
         {
-            "id": 5,
+            "id": 22,
             "name": "Snack Pavo Caldito",
             "price": 5000,
             "description": "Snack Liofilizado en base a pavo, hecho con ingredientes naturales, aptos para animales carnívoros de todos los tamaños. Contenido neto: 100g.",
             "img": "https://res.cloudinary.com/drd6awxrl/image/upload/v1696796696/rat-club-catalogue/food/snack_pavo_caldito_c67okw.jpg"
         },
         {
-            "id": 6,
+            "id": 23,
             "name": "Excellent Food",
             "price": 6690,
             "description": "divertido juguete para mascotitas exóticas, en forma del famoso gorila gigante que captara la atencion de tu pequeña mascota.  Una adorable e innovadora manera de premiar a nuestros peluditos con increíbles snacks. Contenido neto: 500g.",

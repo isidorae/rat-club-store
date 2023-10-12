@@ -6,11 +6,9 @@ import { Link } from "react-router-dom";
 import MinusPlusDel from "./MinusPlusDel";
 
 
-export default function ProductCard({data, productCollection}) {
+export default function ProductCard({data, productCollection, addToCart}) {
 
-    let quantity = 1;
-
-    console.log(data)
+    let quantity = 0;
 
     return(
         <>
@@ -22,9 +20,9 @@ export default function ProductCard({data, productCollection}) {
                      <Card.Title className="text-center">{item.name}</Card.Title>
                      <Card.Text>${item.price}</Card.Text>
                      {quantity === 0
-                     ? (  <button className="btn-item-add" variant="primary">Agregar</button>
+                     ? (  <button onClick={() => addToCart(item)} className="btn-item-add" variant="primary">Agregar</button>
                      )
-                      : ( <MinusPlusDel quantity={quantity}/>)}
+                      : ( <MinusPlusDel/>)}
                  </Card.Body>
                  </Card>
                  )

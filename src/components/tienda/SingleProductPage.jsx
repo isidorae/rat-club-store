@@ -2,8 +2,13 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+
+import CartContext from "../../context/CartContext";
 
 export default function SingleProductPage({ singleProductObj, productCollection}) {
+
+  const { addToCart } = useContext(CartContext);
 
   const {name, price, img, id, description } = singleProductObj
 
@@ -48,7 +53,7 @@ export default function SingleProductPage({ singleProductObj, productCollection}
                   <button className="btn-item-minus">-</button>
                 </div>
                 <div className="">
-                  <button className="btn-single-page-add" variant="danger">
+                  <button onClick={() => addToCart(singleProductObj)}className="btn-single-page-add" variant="danger">
                     Añadir al carrito
                   </button>
                 </div>

@@ -1,10 +1,16 @@
+import { useContext } from 'react';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import items from "../../items.json"
 
 import ProductCard from "./ProductCard";
 
+import CartContext from '../../context/CartContext';
+
 export default function ProductsPage({productCollection}) {
+
+    //USE CONTEXT
+    const { addToCart } = useContext(CartContext)
 
     let data;
     console.log(productCollection)
@@ -37,6 +43,7 @@ export default function ProductsPage({productCollection}) {
                 <ProductCard
                 data={data}
                 productCollection={productCollection}
+                addToCart={addToCart}
                 />
             </Row>
         </Container>

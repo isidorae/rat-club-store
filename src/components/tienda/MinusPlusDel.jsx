@@ -1,13 +1,13 @@
 
 
-export default function MinusPlusDel({quantity}) {
+export default function MinusPlusDel() {
   return (
     <>
-      <div className="d-flex flex-row align-items-cente justify-content-center">
+      <div className="d-flex flex-row align-items-center justify-content-center">
         <div className=" d-flex flex-row align-items-center justify-content-center">
           <button className="btn-item-plus">+</button>
           <div className="plus-minus-container fw-bold">
-            <span>{quantity}</span>
+            <span>1</span>
           </div>
           <button className="btn-item-minus">-</button>
         </div>
