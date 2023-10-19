@@ -1,18 +1,41 @@
+import { useContext, useState } from 'react';
+import CartContext from '../../context/CartContext';
+
+export default function MinusPlusDel({itemid}) {
+
+  const {removeFromCart, handleQuantityChange} = useContext(CartContext)
+
+  const [quantity, setQuantity] = useState(1)
+
+  const addQuantity = () => {
+    setQuantity(quantity + 1);
+    // console.log(itemid, quantity)
+    // setProductQuantity({[itemid]: quantity })
+    handleQuantityChange(itemid, quantity)
+
+  }
+
+  const reduceQuantity = () => {
+    if (quantity === 1) {
+      return;
+    }
+    setQuantity(quantity - 1);
+    handleQuantityChange(itemid, quantity)
+  }
 
 
-export default function MinusPlusDel() {
   return (
     <>
       <div className="d-flex flex-row align-items-center justify-content-center">
         <div className=" d-flex flex-row align-items-center justify-content-center">
-          <button className="btn-item-plus">+</button>
+          <button onClick={addQuantity} className="btn-item-plus">+</button>
           <div className="plus-minus-container fw-bold">
-            <span>1</span>
+            <span>{quantity}</span>
           </div>
-          <button className="btn-item-minus">-</button>
+          <button onClick={reduceQuantity} className="btn-item-minus">-</button>
         </div>
         <div className="">
-          <button className="btn-item-remove" variant="danger">
+          <button onClick={() => removeFromCart(itemid)} className="btn-item-remove" variant="danger">
             x
           </button>
         </div>

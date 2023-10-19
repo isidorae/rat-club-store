@@ -16,7 +16,7 @@ export default function AboutUs() {
                      <img className="mb-3" src={loveRat} alt="" />
                 </section>
                 <section>
-                    <h3 className="text-center">¿Quienes Somos?</h3>
+                    <h3 className="text-center">¿Quiénes Somos?</h3>
                     <p>RatClub nace el año 2022. Somos una pequeña compañia de 20 personas que aman a los roedores.
                             Casi todos los miembros de la compañia tienen ratas de mascotas por lo que estamos
                             constantemente buscando productos para nuestros amigos, y debido a la falta de 

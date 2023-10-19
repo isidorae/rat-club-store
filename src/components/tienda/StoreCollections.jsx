@@ -6,7 +6,7 @@ export default function StoreCollections() {
         <>
         <div className="box-shadow-store">
         <HomeCollection
-        title="Categorias"/>
+        title="Categorías"/>
         </div>
         </>
     )

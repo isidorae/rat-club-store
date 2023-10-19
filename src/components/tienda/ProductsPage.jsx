@@ -1,35 +1,46 @@
 import { useContext } from 'react';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
-import items from "../../items.json"
+import { axiosGetData } from '../../hooks/axiosGetData';
 
 import ProductCard from "./ProductCard";
 
 import CartContext from '../../context/CartContext';
+
 
 export default function ProductsPage({productCollection}) {
 
     //USE CONTEXT
     const { addToCart } = useContext(CartContext)
 
+    //will store data and loading from X collection...
     let data;
-    console.log(productCollection)
+    let loading;
 
-    //desde database - - > en vez de cargar data = items.food; hacemos fetch
-    // de url render.com/store/:collection ... data va a ser igual al fetch de eso.. 
+    //Destructure data from different collections
+    const { data: accessoryData, loading : loadAccessory } = axiosGetData("https://ratclub.onrender.com/rat-club-api/v1/products/collection/accesorios")
+    const { data: foodData, loading: loadFood } = axiosGetData("https://ratclub.onrender.com/rat-club-api/v1/products/collection/alimentos")
+    const { data: homeData, loading: loadHome } = axiosGetData("https://ratclub.onrender.com/rat-club-api/v1/products/collection/hogar")
+    const { data: toysData, loading: loadToys} = axiosGetData("https://ratclub.onrender.com/rat-club-api/v1/products/collection/juguetes")
+    
 
+    //check which collection to load data from, segun URL en que estemos
     switch(productCollection) {
         case "alimentos":
-        {data = items.food}
+        {data = foodData,
+        loading = loadFood}
         break;
         case "accesorios":
-        {data = items.accesories}
+        {data = accessoryData,
+        loading = loadAccessory}
         break;
         case "juguetes":
-        {data = items.toys}
+        {data = toysData,
+        loading = loadToys}
         break;
         case "hogar":
-        {data = items.hogar}
+        {data = homeData,
+        loading = loadHome}
         break;
         default:
         {console.log("error getting productCollection")}
@@ -41,6 +52,7 @@ export default function ProductsPage({productCollection}) {
         <Container>
             <Row>
                 <ProductCard
+                loading={loading}
                 data={data}
                 productCollection={productCollection}
                 addToCart={addToCart}

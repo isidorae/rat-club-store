@@ -20,7 +20,9 @@ export default function Cart() {
           </div>
           <div className="cart-items">
             {/* ITEM A COMPRAR */}
-            {cart.map((item) => {
+            {cart.length === 0
+            ? (<><h2 className="p-3">No hay productos en tu carrito... 🐭🙁</h2></>)
+            : (cart.map((item) => {
               return (
                 <div className="cart-row" key={item.id}>
                   <div className="cart-item cart-column">
@@ -35,11 +37,14 @@ export default function Cart() {
                   </div>
                   <span className="cart-price cart-column">${item.price}</span>
                   <div className="cart-quantity cart-column">
-                    <MinusPlusDel />
+                    <MinusPlusDel itemid={item.id} />
                   </div>
                 </div>
               );
-            })}
+             })
+            )
+            }
+            
             {/* ITEM A COMPRAR */}
           </div>
           <div className="cart-total">
