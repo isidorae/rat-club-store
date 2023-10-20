@@ -1,12 +1,15 @@
 import { createContext, useState, useEffect } from "react"
-import items from '../items.json'
+// import { axiosGetData } from "../hooks/axiosGetData"
 
 const CartContext = createContext()
 
 const CartProvider = ({children}) => {
 
+
+    //************* FETCH DATA */
+    // const { data: dataApi, loading } = axiosGetData(`https://ratclub.onrender.com/rat-club-api/v1/products/`)
+
      //*************** VARIABLES */
-console.log(items)
     // elementos en carrito
     const [cart, setCart] = useState([]);
 
@@ -20,6 +23,9 @@ console.log(items)
     //productos totales en carrito
     const[quantitySum, setQuantitySum] = useState(0)
 
+    //show Add To Cart Butotn
+    const [ addToCartBtn, SetAddToCartBtn ] = useState(true)
+
     //************** FUNCTIONS */
 
     const addToCart = (product) => {
@@ -32,7 +38,7 @@ console.log(items)
         }
         //setCart con producto
         setCart([...cart, product])
-        handleQuantityChange(product.id, 1)
+        handleQuantityChange(product._id, 1)
         // setProductQuantity([...productQuantity, product.id])
         console.log(product)
         // console.log("productQuantity: " + productQuantity)
@@ -41,23 +47,65 @@ console.log(items)
 
     const removeFromCart = (id) => {
         //crear nuevo array con productos que se mantienen en cart. 
-        const newCart = cart.filter(item => id != item.id)
+        const newCart = cart.filter(item => id != item._id)
         console.log(newCart)
         //setCart con array filtrado
         setCart(newCart)
         handleQuantityChange(id, 0)
     }
 
+    useEffect(()=> {
+
+        countTotalProductsInCart()
+        console.log(quantitySum)
+        
+    },[cart, productQuantity])
 
     const handleQuantityChange = (productID, newQuantity) => {
         //setProductQuantity
         setProductQuantity((prevState) => (
-            {
+             {
                 ...prevState,
                 [productID]: newQuantity
-            }
+             }
         ))
     }
+
+//array of products(id: quantity) with quantities 
+    const arrayOfQuantities =  Object.entries(productQuantity)
+    console.log(arrayOfQuantities)
+
+    const countTotalProductsInCart = () => {
+
+        let sum = 0;
+        // transformamos values de obj en array , para poder sumarlos 
+        let productsInCart = Object.values(productQuantity);
+        console.log(productsInCart)
+
+        //sum and store sum in 'QuantitySum'
+        productsInCart.forEach(num => {
+            sum += num
+            return sum
+        })
+
+        setQuantitySum(sum)
+    }
+
+    const checkIfItemIsInCart = (id) => {
+        cart.forEach((product) => {
+        if (product._id === id){
+          SetAddToCartBtn(false)
+          return;
+        } else {
+          SetAddToCartBtn(true)
+        }
+      })
+  
+  
+    }
+
+
+    
 
     const updateTotalCart = () => {
         //setCartTotal
@@ -65,17 +113,6 @@ console.log(items)
 
     const confirmOrder = () => {
         //confirm 
-    }
-
-    const countTotalProductsInCart = () => {
-        // //creamos array con values [1,2, 1, 1 ,....]
-        // let productsInCart = Object.values(productQuantity);
-        // console.log(productsInCart)
-        // //sumar values
-        // for (let i = 0; i < productsInCart.length; i++) {
-        //     sum(productsInCart[i])
-            
-        // }
     }
 
 
@@ -89,12 +126,18 @@ console.log(items)
     //updateTotalCart --> /carrito
     //confirmOrder --> /carrito
 
-    useEffect(()=> {
-        
-    },[cart])
 
 
-    const data = {addToCart, cart, removeFromCart, handleQuantityChange}
+    const data = {
+        addToCart,
+        cart,
+        removeFromCart,
+        handleQuantityChange,
+        quantitySum,
+        checkIfItemIsInCart,
+        addToCartBtn,
+        arrayOfQuantities
+    }
 
     return(
         <CartContext.Provider value={data}>

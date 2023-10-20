@@ -1,9 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useParams  } from "react-router-dom"
-import items from "../items.json"
 import SingleProductPage from "../components/tienda/SingleProductPage"
 import { axiosGetData } from "../hooks/axiosGetData"
-import axios from 'axios'
 
 export default function Product() {
 

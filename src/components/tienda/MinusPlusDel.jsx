@@ -1,26 +1,44 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect} from 'react';
 import CartContext from '../../context/CartContext';
 
 export default function MinusPlusDel({itemid}) {
 
-  const {removeFromCart, handleQuantityChange} = useContext(CartContext)
+  const {removeFromCart, cart, handleQuantityChange, arrayOfQuantities} = useContext(CartContext)
 
-  const [quantity, setQuantity] = useState(1)
+  let startingValue = 1
+  let actualQuantity = 1;
+  const [quantity, setQuantity] = useState(startingValue)
+
+  // useEffect(() => {
+  //   getActualQuantity()
+  // }, [cart, quantity])
+
+  // const getActualQuantity = () => {
+  //   for (let i = 0; i < arrayOfQuantities.length; i++ )
+  //   {
+  //       if (arrayOfQuantities[i][0] === itemid) {
+  //         actualQuantity = arrayOfQuantities[i][1]
+  //       }
+  //   }
+  //   return null;
+  // }
 
   const addQuantity = () => {
-    setQuantity(quantity + 1);
+    const newQuantity = quantity + 1; 
+    setQuantity(newQuantity);
+    handleQuantityChange(itemid, newQuantity)
     // console.log(itemid, quantity)
     // setProductQuantity({[itemid]: quantity })
-    handleQuantityChange(itemid, quantity)
 
   }
 
   const reduceQuantity = () => {
+    const newQuantity = quantity - 1;
     if (quantity === 1) {
       return;
     }
-    setQuantity(quantity - 1);
-    handleQuantityChange(itemid, quantity)
+    setQuantity(newQuantity);
+    handleQuantityChange(itemid, newQuantity)
   }
 
 
@@ -28,11 +46,11 @@ export default function MinusPlusDel({itemid}) {
     <>
       <div className="d-flex flex-row align-items-center justify-content-center">
         <div className=" d-flex flex-row align-items-center justify-content-center">
-          <button onClick={addQuantity} className="btn-item-plus">+</button>
+          <button onClick={() => addQuantity()} className="btn-item-plus">+</button>
           <div className="plus-minus-container fw-bold">
             <span>{quantity}</span>
           </div>
-          <button onClick={reduceQuantity} className="btn-item-minus">-</button>
+          <button onClick={() => reduceQuantity()} className="btn-item-minus">-</button>
         </div>
         <div className="">
           <button onClick={() => removeFromCart(itemid)} className="btn-item-remove" variant="danger">

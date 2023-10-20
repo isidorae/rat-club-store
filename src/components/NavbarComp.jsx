@@ -10,11 +10,13 @@ import './navbar.css'
 
 import { useContext } from "react";
 import SignInContext from '../context/SignInContext'
+import CartContext from '../context/CartContext';
 
 export default function NavbarComp() {
 
   const { goToSignInHomePage } = useContext(SignInContext)
-
+  const { quantitySum } = useContext(CartContext)
+  
     return (
         <Navbar sticky="top" expand="lg" className="bg-body-purple">
           <Container className="d-flex">
@@ -44,7 +46,7 @@ export default function NavbarComp() {
                     viewBox="0 0 16 16">
                     <path d="M5.071 1.243a.5.5 0 0 1 .858.514L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 6h1.717L5.07 1.243zM3.5 10.5a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3z"/>
                     </svg>
-                    <div className="cart-product-num text-white">3</div>
+                    <div className="cart-product-num text-white">{!quantitySum ? 0 : quantitySum}</div>
               </button></Link>
               <button onClick={goToSignInHomePage} title="iniciar sesión" className="login-navbar-button">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">

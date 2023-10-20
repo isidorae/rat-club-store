@@ -24,7 +24,7 @@ export default function Cart() {
             ? (<><h2 className="p-3">No hay productos en tu carrito... 🐭🙁</h2></>)
             : (cart.map((item) => {
               return (
-                <div className="cart-row" key={item.id}>
+                <div className="cart-row" key={item._id}>
                   <div className="cart-item cart-column">
                     <img
                       className="cart-item-image"
@@ -37,7 +37,7 @@ export default function Cart() {
                   </div>
                   <span className="cart-price cart-column">${item.price}</span>
                   <div className="cart-quantity cart-column">
-                    <MinusPlusDel itemid={item.id} />
+                    <MinusPlusDel itemid={item._id} />
                   </div>
                 </div>
               );
