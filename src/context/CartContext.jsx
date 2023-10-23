@@ -71,7 +71,7 @@ const CartProvider = ({children}) => {
         ))
     }
 
-//array of products(id: quantity) with quantities 
+//array of products(id: quantity) with quantities [[id, value], [id, value]...]
     const arrayOfQuantities =  Object.entries(productQuantity)
     console.log(arrayOfQuantities)
 
@@ -91,6 +91,7 @@ const CartProvider = ({children}) => {
         setQuantitySum(sum)
     }
 
+    // cambiar btn en product card
     const checkIfItemIsInCart = (id) => {
         cart.forEach((product) => {
         if (product._id === id){

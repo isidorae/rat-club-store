@@ -3,42 +3,54 @@ import CartContext from '../../context/CartContext';
 
 export default function MinusPlusDel({itemid}) {
 
-  const {removeFromCart, cart, handleQuantityChange, arrayOfQuantities} = useContext(CartContext)
+  const {removeFromCart, handleQuantityChange, arrayOfQuantities} = useContext(CartContext)
 
-  let startingValue = 1
-  let actualQuantity = 1;
-  const [quantity, setQuantity] = useState(startingValue)
+  const [currentQuantValue, setCurrentQuantValue] = useState(1)
 
-  // useEffect(() => {
-  //   getActualQuantity()
-  // }, [cart, quantity])
+  useEffect(() => {
+    currentQuantity()
+  }, [arrayOfQuantities])
 
-  // const getActualQuantity = () => {
-  //   for (let i = 0; i < arrayOfQuantities.length; i++ )
-  //   {
-  //       if (arrayOfQuantities[i][0] === itemid) {
-  //         actualQuantity = arrayOfQuantities[i][1]
-  //       }
-  //   }
-  //   return null;
-  // }
+console.log('itemid: ' + itemid)
+
+
+
+  const currentQuantity = () => {
+
+    for (let i = 0; i < arrayOfQuantities.length; i++) {
+      let idValue = arrayOfQuantities[i][0]
+      if (idValue == itemid){
+        console.log('EQUAL')
+        // console.log('hi: ' + arrayOfQuantities[i][1])
+        setCurrentQuantValue(arrayOfQuantities[i][1]);
+        console.log(currentQuantValue)
+        return;
+        // return currentQuantValue
+      }
+      console.log('NOT EQUAL')
+    }
+    // console.log('NOT EQUAL')
+    console.log(arrayOfQuantities)
+  }
 
   const addQuantity = () => {
-    const newQuantity = quantity + 1; 
-    setQuantity(newQuantity);
+    const newQuantity = currentQuantValue + 1; 
+    // setQuantity(newQuantity);
     handleQuantityChange(itemid, newQuantity)
+    setCurrentQuantValue(newQuantity)
     // console.log(itemid, quantity)
     // setProductQuantity({[itemid]: quantity })
 
   }
 
   const reduceQuantity = () => {
-    const newQuantity = quantity - 1;
-    if (quantity === 1) {
-      return;
+    // const current = currentQuantValue
+    if (currentQuantValue > 1){
+      const newQuantity = currentQuantValue - 1;
+      handleQuantityChange(itemid, newQuantity)
+      setCurrentQuantValue(newQuantity)
     }
-    setQuantity(newQuantity);
-    handleQuantityChange(itemid, newQuantity)
+
   }
 
 
@@ -48,7 +60,7 @@ export default function MinusPlusDel({itemid}) {
         <div className=" d-flex flex-row align-items-center justify-content-center">
           <button onClick={() => addQuantity()} className="btn-item-plus">+</button>
           <div className="plus-minus-container fw-bold">
-            <span>{quantity}</span>
+            <span>{currentQuantValue}</span>
           </div>
           <button onClick={() => reduceQuantity()} className="btn-item-minus">-</button>
         </div>
