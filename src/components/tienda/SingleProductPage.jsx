@@ -2,7 +2,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect} from "react";
 
 import CartContext from "../../context/CartContext";
 import MinusPlusDel from "./MinusPlusDel";
@@ -11,20 +11,11 @@ export default function SingleProductPage({ singleProductObj: data, productColle
 
   const { addToCart, cart, checkIfItemIsInCart, addToCartBtn} = useContext(CartContext);
 
-
-  console.log(productCollection)
-
-  // const [ addToCartBtn, SetAddToCartBtn ] = useState(true)
-
   useEffect(() => {
 
     checkIfItemIsInCart(productID)
 
   }, [cart])
-
-
-
-
 
   return (
     <div className="shadow-box-single-pg-layer">
@@ -37,7 +28,7 @@ export default function SingleProductPage({ singleProductObj: data, productColle
             </nav>
         </div>
           {loading
-          ? <div>loading data...</div>
+          ? <div>Cargando productos...</div>
           : 
             <>
                <div className="m-5">
@@ -74,11 +65,8 @@ export default function SingleProductPage({ singleProductObj: data, productColle
           </Row>
         </Container>
       </div>
-            </>
-          
+            </> 
       }
-           
-     
     </div>
   );
 }

@@ -1,33 +1,27 @@
 import { createContext, useState, useEffect } from "react"
-// import { axiosGetData } from "../hooks/axiosGetData"
 
 const CartContext = createContext()
 
 const CartProvider = ({children}) => {
 
-
-    //************* FETCH DATA */
-    // const { data: dataApi, loading } = axiosGetData(`https://ratclub.onrender.com/rat-club-api/v1/products/`)
-
-     //*************** VARIABLES */
+    //************************************** VARIABLES **************************************/
     // elementos en carrito
     const [cart, setCart] = useState([]);
 
     // $valor total de carrito
     const [cartTotal, setCartTotal] = useState(0)
 
-    // cantidad de mismo producto en carrito
+    // cantidad de mismo producto en carrito {id: quantity, id-2: quantity... }
     const [productQuantity, setProductQuantity] = useState({})
-    console.log(productQuantity)
 
-    //productos totales en carrito
+    // productos totales en carrito
     const[quantitySum, setQuantitySum] = useState(0)
 
-    //show Add To Cart Butotn
+    // show Add To Cart Butotn
     const [ addToCartBtn, SetAddToCartBtn ] = useState(true)
 
-    //************** FUNCTIONS */
-
+    //************************************** FUNCTIONS **************************************/
+    //****** ADD *******/
     const addToCart = (product) => {
         // evitar añadir duplicados
         for (let i = 0; i < cart.length; i++) {
@@ -36,33 +30,33 @@ const CartProvider = ({children}) => {
                 return;
             }
         }
-        //setCart con producto
+        // setCart con producto
         setCart([...cart, product])
         handleQuantityChange(product._id, 1)
-        // setProductQuantity([...productQuantity, product.id])
-        console.log(product)
-        // console.log("productQuantity: " + productQuantity)
     }
 
-
+ //****** REMOVE *******/
     const removeFromCart = (id) => {
-        //crear nuevo array con productos que se mantienen en cart. 
+        // crear nuevo array con productos que se mantienen en cart. 
         const newCart = cart.filter(item => id != item._id)
-        console.log(newCart)
-        //setCart con array filtrado
+        // setCart con array filtrado
         setCart(newCart)
+        // actualizar quantity a 0;
         handleQuantityChange(id, 0)
     }
 
+ //****** UPDATE NUM OF PRODUCTS IN NAV BAR CART ICON  && TOTAL CART *******/
     useEffect(()=> {
 
         countTotalProductsInCart()
-        console.log(quantitySum)
+        updateTotalCart()
         
     },[cart, productQuantity])
 
+
+ //****** STORE QUANTITY OF ITEM ADDED TO CART *******/
     const handleQuantityChange = (productID, newQuantity) => {
-        //setProductQuantity
+        // setProductQuantity
         setProductQuantity((prevState) => (
              {
                 ...prevState,
@@ -71,26 +65,25 @@ const CartProvider = ({children}) => {
         ))
     }
 
-//array of products(id: quantity) with quantities [[id, value], [id, value]...]
+ //****** CREATE ARRAY OF QUANTITIES OF EACH ITEM *******/   
+    // array of products(id: quantity) with quantities [[id, value], [id, value]...]
     const arrayOfQuantities =  Object.entries(productQuantity)
-    console.log(arrayOfQuantities)
 
+  //****** SUM OF ITEMS FOR NAV BAR ICON *******/
     const countTotalProductsInCart = () => {
 
         let sum = 0;
         // transformamos values de obj en array , para poder sumarlos 
         let productsInCart = Object.values(productQuantity);
-        console.log(productsInCart)
-
         //sum and store sum in 'QuantitySum'
         productsInCart.forEach(num => {
             sum += num
             return sum
         })
-
         setQuantitySum(sum)
     }
 
+  //****** UPDATE DISPLAY OF EITHER --> ADD TO CART / +- BUTTON *******/
     // cambiar btn en product card
     const checkIfItemIsInCart = (id) => {
         cart.forEach((product) => {
@@ -101,32 +94,48 @@ const CartProvider = ({children}) => {
           SetAddToCartBtn(true)
         }
       })
-  
-  
     }
 
-
-    
-
+  //****** SUM OF $ITEMS * QUANTITY OF EACH  *******/
     const updateTotalCart = () => {
-        //setCartTotal
+
+        let newTotal = 0;
+        let quantity = 0;
+
+        cart.forEach(item => {
+
+            // each item has a quantity.. loop through arr of quantities to find item quantity
+            for (let i = 0; i < arrayOfQuantities.length; i++)
+            {
+                if(arrayOfQuantities[i][0] == item._id){
+                    quantity = arrayOfQuantities[i][1];
+                }
+            };
+
+            // each item has a price
+            const price = item.price;
+
+            // multiply {quantity*price} = single itemTotal
+            const singleItemTotal = price * quantity;
+            console.log("new single total: " + singleItemTotal)
+
+            // cart total, sum all single itemTotals... 
+            newTotal = newTotal + singleItemTotal;
+
+            setCartTotal(newTotal)
+        
+        })
     }
 
-    const confirmOrder = () => {
-        //confirm 
+    //****** CLICK ON 'COMPRAR' AT CART.JSX *******/
+    const confirmOrder = (e) => {
+        e.preventDefault()
+        if (cart.length === 0 ) {
+            confirm(`OOPS. Tu carrito esta vacío..`)
+            return;
+        }
+        confirm(`El total de tu compra es $${cartTotal}. Serás redirigido para completar tus datos y realizar el pago.`)
     }
-
-
-    //cart --> /productPage, /singleProductPage, /carrito, -navbar- 
-    //cartTotal --> /carrito
-    //productQuantity --> /prductPage, /singleProductPage, /carrito
-
-    //addToCart --> /productPage, /singleProductPage
-    //removeFromCart --> /productPage, /singleProductPage, /carrito /(onClick)
-    //handleQuantityChange --> /productPage, /singleProductPage, /carrito
-    //updateTotalCart --> /carrito
-    //confirmOrder --> /carrito
-
 
 
     const data = {
@@ -137,7 +146,9 @@ const CartProvider = ({children}) => {
         quantitySum,
         checkIfItemIsInCart,
         addToCartBtn,
-        arrayOfQuantities
+        arrayOfQuantities,
+        cartTotal,
+        confirmOrder
     }
 
     return(

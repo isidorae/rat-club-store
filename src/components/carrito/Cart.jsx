@@ -1,10 +1,12 @@
 import { useContext } from "react";
+import { Link } from 'react-router-dom'
 import "./cart.css";
 import MinusPlusDel from "../tienda/MinusPlusDel";
 import CartContext from "../../context/CartContext";
 
 export default function Cart() {
-  const { cart } = useContext(CartContext);
+
+  const { cart, cartTotal, confirmOrder } = useContext(CartContext);
 
   return (
     <>
@@ -26,13 +28,15 @@ export default function Cart() {
               return (
                 <div className="cart-row" key={item._id}>
                   <div className="cart-item cart-column">
-                    <img
+                    <Link as={Link} to={`/product/${item.category.name}/${item._id}`} >
+                      <img
                       className="cart-item-image"
                       src={item.img}
                       alt=""
                       width="100"
                       height="100"
                     />
+                    </Link>
                     <span className="cart-item-title">{item.name}</span>
                   </div>
                   <span className="cart-price cart-column">${item.price}</span>
@@ -44,15 +48,15 @@ export default function Cart() {
              })
             )
             }
-            
-            {/* ITEM A COMPRAR */}
           </div>
+          {/* ITEM A COMPRAR */}
           <div className="cart-total">
             <strong className="cart-total-title">Total</strong>
-            <span className="cart-total-price">$5000</span>
+            <span className="cart-total-price">${cart.length === 0 ? 0 : cartTotal}</span>
             <button
               className="btn btn-primary btn-purchase fw-bold"
               type="button"
+              onClick={(e) => confirmOrder(e)}
             >
               COMPRAR
             </button>

@@ -4,9 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom'
 import logoImg from '../assets/logos/ratclublogo.png'
-import { Button } from 'react-bootstrap';
 import './navbar.css'
-
 
 import { useContext } from "react";
 import SignInContext from '../context/SignInContext'

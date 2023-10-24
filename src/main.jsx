@@ -7,8 +7,6 @@ import { HashRouter } from 'react-router-dom';
 
 import { SignInProvider } from './context/SignInContext';
 
-
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <HashRouter>
      <SignInProvider>
