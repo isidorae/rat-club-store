@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { useContext } from 'react';
 import SignInContext from '../../context/SignInContext';
 
-export default function SignInBox() {
+export default function LoginBox() {
 
     const { returnToHomePage } = useContext(SignInContext)
 
@@ -26,6 +26,7 @@ export default function SignInBox() {
             <section>
                 <button className="continue-signin-btn">Continuar</button>
             </section>
+            <p>¿No tienes una cuenta? <Link as={Link} to="/registrate" >Regístrate</Link></p>
         </div>
     </div>
     )

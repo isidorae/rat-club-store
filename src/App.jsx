@@ -10,9 +10,10 @@ import Store from './pages/Store'
 import Product from './pages/Product'
 import Footer from './components/Footer';
 import ProductCollection from './pages/ProductCollection';
-import SignIn from './pages/SignIn'
+import LoginPage from './pages/LoginPage'
 import UserProfile from './pages/UserProfile'
 import CartPage from './pages/CartPage';
+import SignUp from './pages/SignUp';
 
 import { useContext } from "react";
 import SignInContext from './context/SignInContext'
@@ -29,7 +30,8 @@ console.log(signIn)
     <CartProvider>
     {signIn
     ? (<Routes>
-       <Route path='/' element={< SignIn/>}></Route>
+       <Route path='/' element={< LoginPage/>}></Route>
+       <Route path='/registrate' element={< SignUp/>}></Route>
        <Route path='/*' element={< Navigate to='/'/>} ></Route>
     </Routes>)
     : ( 
@@ -42,7 +44,6 @@ console.log(signIn)
       <Route path='/store' element={< Store/>}></Route>
       <Route path='/store/:productCollection' element={< ProductCollection />}></Route>
       <Route path='/product/:productCollection/:productID' element={< Product/>}></Route>
-      <Route path='/signin' element={< SignIn/>}></Route>
       <Route path='/carrito' element={< CartPage/>}></Route>
       <Route path='/myprofile' element={< UserProfile/>}></Route>
       <Route path='/*' element={< Navigate to='/'/>} ></Route>

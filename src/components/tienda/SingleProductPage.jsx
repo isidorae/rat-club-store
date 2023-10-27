@@ -2,20 +2,15 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
-import { useContext, useEffect} from "react";
+import { useContext, useEffect, useState} from "react";
 
 import CartContext from "../../context/CartContext";
 import MinusPlusDel from "./MinusPlusDel";
 
 export default function SingleProductPage({ singleProductObj: data, productCollection, productID, loading}) {
 
-  const { addToCart, cart, checkIfItemIsInCart, addToCartBtn} = useContext(CartContext);
+  const { addToCart, showBtn} = useContext(CartContext);
 
-  useEffect(() => {
-
-    checkIfItemIsInCart(productID)
-
-  }, [cart])
 
   return (
     <div className="shadow-box-single-pg-layer">
@@ -53,13 +48,13 @@ export default function SingleProductPage({ singleProductObj: data, productColle
               </div>
               {/* add to cart button */}
               <div className="d-flex flex-row align-self-start my-2">
-                {addToCartBtn
+                {showBtn
                 ?  <div className="">
                   <button onClick={() => addToCart(data)}className="btn-single-page-add" variant="danger">
                     Añadir al carrito
                   </button>
                 </div>
-              :  <MinusPlusDel itemid={data._id}/> }
+              :  <MinusPlusDel itemid={data._id} /> }
               </div>
             </Col>
           </Row>

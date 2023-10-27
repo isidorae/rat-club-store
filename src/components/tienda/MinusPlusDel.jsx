@@ -5,12 +5,14 @@ export default function MinusPlusDel({itemid}) {
 
   const {removeFromCart, handleQuantityChange, arrayOfQuantities} = useContext(CartContext)
 
-  //Quantity value displayed on Button
-  const [currentQuantValue, setCurrentQuantValue] = useState(1)
+
+      //Quantity value displayed on Button MinusPlusDel
+      const [currentQuantValue, setCurrentQuantValue] = useState(1)
 
   useEffect(() => {
     currentQuantity()
   }, [arrayOfQuantities])
+  
 
 
   const currentQuantity = () => {

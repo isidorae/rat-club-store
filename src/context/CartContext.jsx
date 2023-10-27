@@ -17,8 +17,8 @@ const CartProvider = ({children}) => {
     // productos totales en carrito
     const[quantitySum, setQuantitySum] = useState(0)
 
-    // show Add To Cart Butotn
-    const [ addToCartBtn, SetAddToCartBtn ] = useState(true)
+    // show Add To Cart Button
+    const [showBtn, setShowBtn] = useState(true)
 
     //************************************** FUNCTIONS **************************************/
     //****** ADD *******/
@@ -30,13 +30,17 @@ const CartProvider = ({children}) => {
                 return;
             }
         }
+        //hide btn de agregar al carrito y mostrar +/-
+        setShowBtn(false)
         // setCart con producto
         setCart([...cart, product])
         handleQuantityChange(product._id, 1)
     }
-
+console.log(cart)
  //****** REMOVE *******/
     const removeFromCart = (id) => {
+         //hide btn de agregar al carrito y mostrar +/-
+         setShowBtn(true)
         // crear nuevo array con productos que se mantienen en cart. 
         const newCart = cart.filter(item => id != item._id)
         // setCart con array filtrado
@@ -50,6 +54,7 @@ const CartProvider = ({children}) => {
 
         countTotalProductsInCart()
         updateTotalCart()
+        // checkIfItemIsInCart()
         
     },[cart, productQuantity])
 
@@ -83,18 +88,6 @@ const CartProvider = ({children}) => {
         setQuantitySum(sum)
     }
 
-  //****** UPDATE DISPLAY OF EITHER --> ADD TO CART / +- BUTTON *******/
-    // cambiar btn en product card
-    const checkIfItemIsInCart = (id) => {
-        cart.forEach((product) => {
-        if (product._id === id){
-          SetAddToCartBtn(false)
-          return;
-        } else {
-          SetAddToCartBtn(true)
-        }
-      })
-    }
 
   //****** SUM OF $ITEMS * QUANTITY OF EACH  *******/
     const updateTotalCart = () => {
@@ -144,11 +137,11 @@ const CartProvider = ({children}) => {
         removeFromCart,
         handleQuantityChange,
         quantitySum,
-        checkIfItemIsInCart,
-        addToCartBtn,
         arrayOfQuantities,
         cartTotal,
-        confirmOrder
+        confirmOrder,
+        setShowBtn,
+        showBtn,
     }
 
     return(

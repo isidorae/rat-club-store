@@ -8,7 +8,6 @@ import MinusPlusDel from "./MinusPlusDel";
 
 export default function ProductCard({loading, data, productCollection, addToCart}) {
 
-    let quantity = 0;
 
     return(
         <>
@@ -21,10 +20,7 @@ export default function ProductCard({loading, data, productCollection, addToCart
                  <Card.Body className="d-flex flex-column align-items-center">
                      <Card.Title className="text-center">{item.name}</Card.Title>
                      <Card.Text>${item.price}</Card.Text>
-                     {quantity === 0
-                     ? (  <button onClick={() => addToCart(item)} className="btn-item-add" variant="primary">Agregar</button>
-                     )
-                      : ( <MinusPlusDel itemid={item._id} />)}
+                     <button onClick={() => addToCart(item)} className="btn-item-add" variant="primary">Agregar</button>
                  </Card.Body>
                  </Card>
                  )
