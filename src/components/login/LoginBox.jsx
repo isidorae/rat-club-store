@@ -1,13 +1,37 @@
 import ratlogo from '../../assets/logos/ratclublogo.png'
 import './signin.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import SignInContext from '../../context/SignInContext';
+import AuthContext from '../../context/AuthContext';
 
 export default function LoginBox() {
 
-    const { returnToHomePage } = useContext(SignInContext)
+    const { returnToHomePage, setSignIn } = useContext(SignInContext)
+    const { login, isAuth } = useContext(AuthContext)
+
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+
+        if(isAuth){
+            setSignIn(false)
+            navigate('/myprofile')
+        }
+
+    }, [isAuth])
+
+    const userLogin = () => {
+        const user = { email, password }
+
+        login(user)
+
+        console.log(user)
+    }
 
     return(
     <div className="sign-in-container-parent d-flex align-items-center justify-content-center">
@@ -20,11 +44,11 @@ export default function LoginBox() {
             <h2>Iniciar Sesión</h2>
             </section>
             <section>
-                <input className="signin-input" type="email" placeholder="email" /><br />
-                <input className="signin-input-pass" type="password" placeholder="contraseña" />
+                <input value={email} onChange={(e) => setEmail(e.target.value)} className="signin-input" type="email" placeholder="email" /><br />
+                <input value={password} onChange={(e) => setPassword(e.target.value)} className="signin-input-pass" type="password" placeholder="contraseña" />
             </section>
             <section>
-                <button className="continue-signin-btn">Continuar</button>
+                <button onClick={userLogin} className="continue-signin-btn">Continuar</button>
             </section>
             <p>¿No tienes una cuenta? <Link as={Link} to="/registrate" >Regístrate</Link></p>
         </div>

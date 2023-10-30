@@ -14,8 +14,8 @@ const SignInProvider = ({children}) => {
         setSignIn(false)
     }
 
-    const goToSignInHomePage = (e) => {
-        e.preventDefault()
+    const goToSignInHomePage = () => {
+        // e.preventDefault()
         setSignIn(true)
     }
 
@@ -26,7 +26,7 @@ const SignInProvider = ({children}) => {
     }, [])
 
 
-    const data = {signIn, returnToHomePage, goToSignInHomePage};
+    const data = {signIn ,setSignIn, returnToHomePage, goToSignInHomePage};
 
     return (
        <SignInContext.Provider value={data}>

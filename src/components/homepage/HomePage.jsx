@@ -3,6 +3,7 @@ import HeroImg from './HeroImg'
 import SectionTwo from './SectionTwo'
 import HomeCollection from './HomeCollection'
 import ratLoveImg from '/public/homepage-imgs/ratloveimg.png'
+import { Link } from 'react-router-dom'
 
 export default function HomePage() {
 

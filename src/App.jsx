@@ -18,6 +18,7 @@ import SignUp from './pages/SignUp';
 import { useContext } from "react";
 import SignInContext from './context/SignInContext'
 import { CartProvider } from './context/CartContext';
+import { AuthProvider } from './context/AuthContext'
 
 
 function App() {
@@ -27,6 +28,7 @@ const { signIn } = useContext(SignInContext)
 console.log(signIn)
   return (
     <>
+    <AuthProvider>
     <CartProvider>
     {signIn
     ? (<Routes>
@@ -51,6 +53,7 @@ console.log(signIn)
     <Footer/>
     </>)}
     </CartProvider>
+    </AuthProvider>
     </>
   )
 }

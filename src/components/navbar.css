@@ -67,6 +67,15 @@
     border: none;
 }
 
+.logout-navbar-button {
+    color: var(--hover-link-color);
+    background-color: rgb(40, 40, 40);
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    border: none;
+}
+
 /************ reset bootstrap styles *********/
 .bg-body-purple {
     background-color: var(--bg-first-color) !important;
