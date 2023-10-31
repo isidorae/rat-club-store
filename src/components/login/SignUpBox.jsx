@@ -8,7 +8,7 @@ import AuthContext from '../../context/AuthContext';
 export default function SignUpBox() {
 
     const { returnToHomePage, setSignIn } = useContext(SignInContext)
-    const { signUp, isAuth } = useContext(AuthContext)
+    const { signUp, isAuth, errorMsgs, setErrorMsgs } = useContext(AuthContext)
 
     //inicializar navigate
     const navigate = useNavigate()
@@ -31,7 +31,16 @@ export default function SignUpBox() {
         setValue(e.target.value)
     }
 
-    const newUser = async () => {
+    const newUser = () => {
+
+            if(name === "" || lastName === "" || username === "" || email === "" || password === ""){
+                return setErrorMsgs(["Faltan campos por rellenar."]);
+            }
+
+            if(!(/^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/g.test(email))){
+                return setErrorMsgs(["Ingresa un email válido."]);
+            }
+
 
         const newUser = {
             firstName: name,
@@ -55,11 +64,21 @@ export default function SignUpBox() {
             <img className="signin-logo" src={ratlogo} alt="" />
             <h2>Regístrate</h2>
             </section>
+            {errorMsgs ? errorMsgs.map((err, i) => {
+                   return  <p key={i} className="err-msg"><i>{err}</i></p>
+            })
+            : null
+            }
             <section>
-                <input  value={name}  onChange={(e) => updateValue(e, setName)} className="signin-input" type="name" placeholder="nombre" /><br />
-                <input value={lastName} onChange={(e) => updateValue(e, setLastName)} className="signin-input" type="name" placeholder="apellido" /><br />
-                <input value={username} onChange={(e) => updateValue(e, setUsername)} className="signin-input" type="name" placeholder="nombre de usuario" /><br />
-                <input value={email} onChange={(e) => updateValue(e, setEmail)} className="signin-input" type="email" placeholder="email" /><br />
+                <label htmlFor="">nombre:</label><br />
+                <input  value={name.toLowerCase()}  onChange={(e) => updateValue(e, setName)} className="signin-input" type="name" placeholder="nombre" /><br />
+                <label htmlFor="">apellido:</label><br />
+                <input value={lastName.toLowerCase()} onChange={(e) => updateValue(e, setLastName)} className="signin-input" type="name" placeholder="apellido" /><br />
+                <label htmlFor="">username:</label><br />
+                <input value={username.toLowerCase()} onChange={(e) => updateValue(e, setUsername)} className="signin-input" type="name" placeholder="nombre de usuario" /><br />
+                <label htmlFor="">email:</label><br />
+                <input value={email.toLowerCase()} onChange={(e) => updateValue(e, setEmail)} className="signin-input" type="email" placeholder="email" /><br />
+                <label htmlFor="">contraseña:</label><br />
                 <input value={password} onChange={(e) => updateValue(e, setPassword)} className="signin-input-pass" type="password" placeholder="contraseña" />
             </section>
             <section>

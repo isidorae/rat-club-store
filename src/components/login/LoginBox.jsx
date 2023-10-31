@@ -9,7 +9,7 @@ import AuthContext from '../../context/AuthContext';
 export default function LoginBox() {
 
     const { returnToHomePage, setSignIn } = useContext(SignInContext)
-    const { login, isAuth } = useContext(AuthContext)
+    const { login, isAuth, errorMsgs, setErrorMsgs } = useContext(AuthContext)
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -26,7 +26,18 @@ export default function LoginBox() {
     }, [isAuth])
 
     const userLogin = () => {
+
         const user = { email, password }
+        if (email === "" || password === "" )
+        {
+           return setErrorMsgs([...errorMsgs, ["Faltan campos por rellenar."]]);
+
+        }
+
+        if(!(/^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/g.test(email)))
+        {
+            return setErrorMsgs([...errorMsgs, ["Debes ingresar un email."]]);
+        }
 
         login(user)
 
@@ -43,6 +54,11 @@ export default function LoginBox() {
             <img className="signin-logo" src={ratlogo} alt="" />
             <h2>Iniciar Sesión</h2>
             </section>
+            {errorMsgs ? errorMsgs.map((err, i) => {
+                   return  <p key={i} className="err-msg"><i>{err}</i></p>
+            })
+            : null
+            }
             <section>
                 <input value={email} onChange={(e) => setEmail(e.target.value)} className="signin-input" type="email" placeholder="email" /><br />
                 <input value={password} onChange={(e) => setPassword(e.target.value)} className="signin-input-pass" type="password" placeholder="contraseña" />

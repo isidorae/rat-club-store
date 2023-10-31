@@ -8,8 +8,10 @@ const AuthProvider = ({children}) => {
 
     // user que estara loggeado
     const [loggedUser, setLoggedUser] = useState(null)
-
+    //autenticado
     const [isAuth, setIsAuth] = useState(false)
+    //error msg
+    const [errorMsgs, setErrorMsgs] = useState([])
 
     // connected to SignUpBox.jsx
     const signUp = async (user) => {
@@ -22,6 +24,7 @@ const AuthProvider = ({children}) => {
             setIsAuth(true)
         } catch (error) {
             console.log(error)
+            setErrorMsgs([error.response.data.message])
         }
     }
 
@@ -35,6 +38,8 @@ const AuthProvider = ({children}) => {
             setIsAuth(true)
         } catch (error) {
             console.log(error)
+            console.log(error.response.data.message)
+            setErrorMsgs([...errorMsgs, [error.response.data.message]])
         }
     }
 
@@ -52,11 +57,35 @@ const AuthProvider = ({children}) => {
         }
     }
 
-    const data = { signUp, login, logout, isAuth }
+
+    useEffect(() => {
+        resetErrorMsgs()
+        console.log(errorMsgs)
+    }, [errorMsgs])
+
+
+    //clear LOGIN/SINGUP errors
+    const resetErrorMsgs = () => {
+        let timer;
+        console.log('not eliminado')
+        if (errorMsgs.length > 0) {
+            timer =  setTimeout(() => {
+                console.log('eliminado')
+                setErrorMsgs([])
+            }, 5000)
+        }
+       return () => clearTimeout(timer)
+    }
+
+
+
 
     useEffect(() => {
         console.log(loggedUser)
     }, [setLoggedUser])
+
+
+    const data = { signUp, login, logout, isAuth, errorMsgs, setErrorMsgs }
 
     return(
         <AuthContext.Provider value={data} >
