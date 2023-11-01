@@ -10,6 +10,7 @@ export default function Contacto() {
     return(
         <>
         <div className="contact-pg-container d-flex align-items-center justify-content-center">
+            <div className="contact-form-design-container">
             <Container>
                 <Row>
                     <Col className="order-1 order-md-0 mb-5">
@@ -25,6 +26,7 @@ export default function Contacto() {
                     </Col>
                 </Row>
             </Container>
+            </div>
         </div>
         </>
     )

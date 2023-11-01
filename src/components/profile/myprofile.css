@@ -1,0 +1,58 @@
+.profile-pg-container {
+    min-height: 80vh;
+}
+
+.profile-btn {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: none;
+    margin: 0.3rem;
+    color: rgb(111, 42, 163);
+}
+
+.profile-btn:hover {
+    background-color: rgb(255, 255, 255);
+}
+
+.myprofile-info-container {
+    max-width: 600px;
+    min-width: 400px;
+    height: 300px;
+    border: medium solid white;
+    border-radius: 10px;
+    background-color: #7f36c4;
+}
+
+.user-profile-data {
+    color: rgb(159, 236, 255);
+}
+
+.editmyprofile-info-container {
+    max-width: 600px;
+    min-width: 400px;
+    height: 400px;
+    border: medium solid white;
+    border-radius: 10px;
+    background-color: #7f36c4;
+}
+
+/* /******* EDIT data btn */
+
+.edit-user-data-btn {
+    background: linear-gradient(50deg, rgba(134,65,233,0.7) 0%, rgba(87,255,204,0.7) 63%, rgba(255,79,232,0.7) 89%);
+    color: white;
+    text-shadow: 0.15rem 0.2rem 0.5rem rgb(74, 46, 167);
+    padding: 0.2rem;
+    font-weight: bold;
+    border: 1px solid rgb(58, 59, 129);
+    border-radius: 1.3rem;
+}
+
+.edit-user-data-btn:hover {
+    background: linear-gradient(50deg, rgba(64,224,255,0.7) 0%, rgba(70,66,254,0.7) 56%, rgba(57,226,255,0.7) 100%);
+    border: 3px solid rgb(255, 111, 0);
+    color: rgb(134, 244, 246);
+    text-shadow: 0.15rem 0.2rem 0.1rem rgb(40, 24, 92);
+
+}

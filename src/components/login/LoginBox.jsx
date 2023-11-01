@@ -66,7 +66,7 @@ export default function LoginBox() {
             <section>
                 <button onClick={userLogin} className="continue-signin-btn">Continuar</button>
             </section>
-            <p>¿No tienes una cuenta? <Link as={Link} to="/registrate" >Regístrate</Link></p>
+            <p className="mt-3">¿No tienes una cuenta? <Link as={Link} to="/registrate" >Regístrate</Link></p>
         </div>
     </div>
     )

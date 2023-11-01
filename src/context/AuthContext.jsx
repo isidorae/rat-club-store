@@ -1,6 +1,8 @@
+import axios from 'axios'
+import Cookies from 'js-cookie'
 import { createContext, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { registerUser, loginUser, logoutRequest } from '../hooks/authUser'
+import { registerUser, loginUser, logoutRequest, getUserDataReq } from '../hooks/authUser'
 
 const AuthContext = createContext()
 
@@ -20,7 +22,8 @@ const AuthProvider = ({children}) => {
             console.log(res)
             console.log(res.data.detail)
             //id, username e email. 
-            setLoggedUser(res.data.detail)
+            // setLoggedUser(res.data.detail)
+            getCookies()
             setIsAuth(true)
         } catch (error) {
             console.log(error)
@@ -34,7 +37,8 @@ const AuthProvider = ({children}) => {
             const res = await loginUser(user)
             console.log(res)
             console.log(res)
-            setLoggedUser(res.data.detail)
+            // setLoggedUser(res.data.detail)
+            getCookies()
             setIsAuth(true)
         } catch (error) {
             console.log(error)
@@ -50,6 +54,7 @@ const AuthProvider = ({children}) => {
         try {
             console.log('logout')
             logoutRequest()
+            setLoggedUser(null)
             setIsAuth(false)
             navigate('/')
         } catch (error) {
@@ -77,15 +82,29 @@ const AuthProvider = ({children}) => {
        return () => clearTimeout(timer)
     }
 
-
-
-
     useEffect(() => {
+        getCookies()
         console.log(loggedUser)
-    }, [setLoggedUser])
+    }, [])
 
 
-    const data = { signUp, login, logout, isAuth, errorMsgs, setErrorMsgs }
+    const getCookies = async () => {
+        const cookies = Cookies.get()
+        console.log(cookies)
+
+        if(cookies.token){
+            console.log(cookies.token)
+            const res = await getUserDataReq();
+            console.log(res.data)
+            setLoggedUser(res.data)
+            setIsAuth(true)
+        }
+    }
+
+console.log(loggedUser)
+
+
+    const data = { signUp, login, logout, isAuth, errorMsgs, setErrorMsgs, loggedUser}
 
     return(
         <AuthContext.Provider value={data} >

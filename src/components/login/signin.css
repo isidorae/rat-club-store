@@ -2,7 +2,8 @@
     min-height: 100vh;
 }
 
-.sign-in-container {
+.sign-in-container,
+.sign-up-container {
 width: 23rem;
 padding: 2rem;
 border: medium solid rgb(248, 223, 223);
@@ -15,6 +16,10 @@ justify-content: center;
 transition: box-shadow 500ms ease-in-out;
 
 }
+
+.sign-up-container {
+    border-radius: 15px;
+    }
 
 .sign-in-container:hover{
     box-shadow: 0.1rem 0.1rem 0.8rem var(--lighter-pink); 
@@ -49,7 +54,7 @@ transition: box-shadow 500ms ease-in-out;
     background: linear-gradient(50deg, rgba(134,65,233,0.7) 0%, rgba(87,255,204,0.7) 63%, rgba(255,79,232,0.7) 89%);
     color: white;
     text-shadow: 0.15rem 0.2rem 0.5rem rgb(74, 46, 167);
-    margin-top: 0.5rem;
+    margin-top: 0.7rem;
     padding: 0.7rem;
     font-weight: bold;
     border: 3px solid rgb(58, 59, 129);

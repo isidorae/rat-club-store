@@ -26,7 +26,7 @@ const SignInProvider = ({children}) => {
     }, [])
 
 
-    const data = {signIn ,setSignIn, returnToHomePage, goToSignInHomePage};
+    const data = {signIn, setSignIn, returnToHomePage, goToSignInHomePage};
 
     return (
        <SignInContext.Provider value={data}>

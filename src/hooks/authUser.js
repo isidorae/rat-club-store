@@ -1,15 +1,17 @@
-import axios from 'axios'
-
-const url = 'http://localhost:3002/rat-club-api/v1/users'
+import axios from './axios'
 
 export const registerUser = (user) => {
-    return axios.post(`${url}/register`, user)
+    return axios.post(`/users/register`, user)
 }
 
 export const loginUser = (user) => {
-    return axios.post(`${url}/login`, user)
+    return axios.post(`/users/login`, user)
 }
 
 export const logoutRequest = () => {
-    return axios.post(`${url}/logout`)
+    return axios.post(`/users/logout`)
+}
+
+export const getUserDataReq = () => {
+    return axios.get("/users/profile")
 }
