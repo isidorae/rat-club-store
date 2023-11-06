@@ -12,6 +12,36 @@ export const logoutRequest = () => {
     return axios.post(`/users/logout`)
 }
 
-export const getUserDataReq = () => {
-    return axios.get("/users/profile")
+//************** get loggedUserData
+export const getUserDataReq = (id, token) => {
+    return axios.get(`/users/${id}`, {
+        headers: {
+            'authorization': `Bearer ${token}`
+        }
+    })
+}
+
+//************** update user data
+export const updateUserDataReq = (id, data, token) => {
+    return axios.put(`/users/${id}`, data, {
+        headers: {
+            'authorization': `Bearer ${token}`
+        }
+    })
+}
+
+export const updateUserPassReq = (id, pass, token) => {
+    return axios.put(`/users/pass/${id}`, pass, {
+        headers: {
+            'authorization': `Bearer ${token}`
+        }
+    })
+}
+
+export const updateUserEmailReq = (id, email, token) => {
+    return axios.put(`/users/email/${id}`, email, {
+        headers: {
+            'authorization': `Bearer ${token}`
+        }
+    })
 }

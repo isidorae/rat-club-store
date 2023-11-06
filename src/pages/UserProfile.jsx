@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import AuthContext from '../context/AuthContext'
 import SignInContext from '../context/SignInContext'
 import { useNavigate } from 'react-router-dom'
@@ -10,12 +10,16 @@ export default function UserProfile() {
     const { setSignIn } = useContext(SignInContext)
     const { isAuth } = useContext(AuthContext)
 
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
-    // if (!isAuth) {
-    //     setSignIn(true)
-    //     navigate('/l')
-    // }
+    //permitir acceso solo si esta AUTH, sino reedirigi a login
+    useEffect(() => {
+        if (!isAuth) {
+            setSignIn(true)
+            navigate('/')
+        }
+
+    }, [])
 
     return(
         <>

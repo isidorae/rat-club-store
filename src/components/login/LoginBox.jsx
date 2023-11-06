@@ -1,5 +1,6 @@
 import ratlogo from '../../assets/logos/ratclublogo.png'
 import './signin.css'
+import Spinner from 'react-bootstrap/Spinner';
 import { Link, useNavigate } from 'react-router-dom'
 
 import { useContext, useState, useEffect } from 'react';
@@ -9,7 +10,7 @@ import AuthContext from '../../context/AuthContext';
 export default function LoginBox() {
 
     const { returnToHomePage, setSignIn } = useContext(SignInContext)
-    const { login, isAuth, errorMsgs, setErrorMsgs } = useContext(AuthContext)
+    const { login, isAuth, errorMsgs, setErrorMsgs, userLoading } = useContext(AuthContext)
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -39,6 +40,7 @@ export default function LoginBox() {
             return setErrorMsgs([...errorMsgs, ["Debes ingresar un email."]]);
         }
 
+        //enviar data a function login de auth context
         login(user)
 
         console.log(user)
@@ -64,7 +66,13 @@ export default function LoginBox() {
                 <input value={password} onChange={(e) => setPassword(e.target.value)} className="signin-input-pass" type="password" placeholder="contraseña" />
             </section>
             <section>
-                <button onClick={userLogin} className="continue-signin-btn">Continuar</button>
+                <button onClick={userLogin} className="continue-signin-btn">
+                    {userLoading
+                    ?   <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </Spinner>
+                    : "Continuar"}
+                    </button>
             </section>
             <p className="mt-3">¿No tienes una cuenta? <Link as={Link} to="/registrate" >Regístrate</Link></p>
         </div>

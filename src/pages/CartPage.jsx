@@ -1,7 +1,24 @@
 import Cart from "../components/carrito/Cart"
+import { useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'
+import AuthContext from '../context/AuthContext'
+import SignInContext from "../context/SignInContext";
 
 
 export default function CartPage() {
+
+    const { setSignIn } = useContext(SignInContext)
+    const { isAuth } = useContext(AuthContext)
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!isAuth) {
+            setSignIn(true);
+            navigate('/')
+        }
+
+    }, [])
 
 
     return(

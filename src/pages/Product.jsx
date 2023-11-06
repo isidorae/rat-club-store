@@ -9,8 +9,8 @@ export default function Product() {
     const {productCollection, productID} = useParams()
 
     //get data por categoria segun categoria pasada por URL
-    // const { data: dataApi, loading } = axiosGetData(`https://ratclub.onrender.com/rat-club-api/v1/products/collection/${productCollection}`)
-    const { data: dataApi, loading } = axiosGetData(`http://localhost:3002/rat-club-api/v1/products/collection/${productCollection}`)
+    const { data: dataApi, loading } = axiosGetData(`https://ratclub.onrender.com/rat-club-api/v1/products/collection/${productCollection}`)
+    // const { data: dataApi, loading } = axiosGetData(`http://localhost:3002/rat-club-api/v1/products/collection/${productCollection}`)
 
     //find INDEX de item cuyo id sea igual al del params
     let productIndex = dataApi.findIndex(item => {

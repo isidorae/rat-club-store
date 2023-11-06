@@ -33,25 +33,25 @@ export default function MyProfileInfo({user}) {
          <div className="py-2 d-flex flex-row border-top">
             <p className="mb-0 ">Username</p>
             <p className="mb-0 ms-3 user-profile-data">
-              <i>{user ? user.username : "undefined"}</i>
+              <i>{user ? user.username : <i>..loading</i>}</i>
             </p>
           </div>
           <div className="py-2 d-flex flex-row border-top">
             <p className="mb-0 ">Nombre</p>
             <p className="mb-0 ms-3 user-profile-data">
-              <i>{user ? user.nombre : "undefined"}</i>
+              <i>{user ? user.firstName : <i>..loading</i>}</i>
             </p>
           </div>
           <div className="py-2 d-flex flex-row border-top">
             <p className="mb-0">Apellido</p>
             <p className="mb-0 ms-3 user-profile-data">
-              <i>{user ? user.apellido : "undefined"}</i>
+              <i>{user ? user.lastName : <i>..loading</i>}</i>
             </p>
           </div>
           <div className="py-2 d-flex flex-row border-top border-bottom">
             <p className="mb-0">Email</p>
             <p className="mb-0 ms-3 user-profile-data">
-              <i>{user ? user.email : "undefined"}</i>
+              <i>{user ? user.email : <i>..loading</i>}</i>
             </p>
           </div>
         </div>

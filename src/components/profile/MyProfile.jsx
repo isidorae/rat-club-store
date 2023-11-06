@@ -1,11 +1,11 @@
 import './myprofile.css'
 import { Link } from 'react-router-dom'
-import { useContext, useState, useEffect } from 'react'
+import { useContext, useState } from 'react'
 import AuthContext from '../../context/AuthContext'
 
 import ProfileNavBtns from './profileNavBtns'
 import MyProfileInfo from './MyProfileInfo'
-import EditProfileInfo from './editProfileInfo'
+import EditProfileInfo from './config/EditProfileInfo'
 import MyProfileOrders from './MyProfileOrders'
 
 export default function MyProfile() {
@@ -25,13 +25,14 @@ export default function MyProfile() {
         setTypeTwo(false)
     }
 
+
     return(
         <>
         <div className="profile-pg-container box-shadow-container">
             <section className="breadcrumb">
                 <nav>
                     <Link as={Link} to='/'>inicio / </Link>
-                    <Link as={Link} to='/'>{loggedUser ? `perfil de ${loggedUser.username}` : `perfil de undefined` }</Link>
+                    <Link as={Link} to='/'>{loggedUser ? `perfil de ${loggedUser.username}` : <i>..loading</i> }</Link>
                 </nav>
             </section>
             <div className="d-flex flex-column justify-content-center align-items-center">

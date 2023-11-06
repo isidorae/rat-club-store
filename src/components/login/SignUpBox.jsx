@@ -1,5 +1,7 @@
 import ratlogo from '../../assets/logos/ratclublogo.png'
 import './signin.css'
+import Spinner from 'react-bootstrap/Spinner';
+
 import { Link, useNavigate } from 'react-router-dom'
 import { useContext, useState, useEffect } from 'react';
 import SignInContext from '../../context/SignInContext';
@@ -8,7 +10,7 @@ import AuthContext from '../../context/AuthContext';
 export default function SignUpBox() {
 
     const { returnToHomePage, setSignIn } = useContext(SignInContext)
-    const { signUp, isAuth, errorMsgs, setErrorMsgs } = useContext(AuthContext)
+    const { signUp, isAuth, errorMsgs, setErrorMsgs, userLoading} = useContext(AuthContext)
 
     //inicializar navigate
     const navigate = useNavigate()
@@ -84,7 +86,13 @@ export default function SignUpBox() {
                 <input value={password} onChange={(e) => updateValue(e, setPassword)} className="signin-input-pass" type="password" placeholder="contraseña" />{password.length > 3 ? <span>✅</span> : null}
             </section>
             <section>
-                <button onClick={newUser} className="continue-signin-btn">Crear cuenta</button>
+                <button onClick={newUser} className="continue-signin-btn">
+                    {userLoading
+                    ? <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </Spinner>
+                    : "Crear cuenta"}
+                    </button>
             </section>
             <p className="mt-3 mb-0">¿Ya tienes una cuenta? <Link to="/" >Inicia sesión</Link></p>
         </div>
