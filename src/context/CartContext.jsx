@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react"
+import { createOrderReq } from "../hooks/userOrders";
 
 const CartContext = createContext()
 
@@ -121,13 +122,38 @@ console.log(cart)
     }
 
     //****** CLICK ON 'COMPRAR' AT CART.JSX *******/
-    const confirmOrder = (e) => {
+    const confirmOrder = (e, userID, token) => {
         e.preventDefault()
         if (cart.length === 0 ) {
             confirm(`OOPS. Tu carrito esta vacío..`)
             return;
         }
-        confirm(`El total de tu compra es $${cartTotal}. Serás redirigido para completar tus datos y realizar el pago.`)
+        const confirmOrder = confirm(`El total de tu compra es $${cartTotal}. Serás redirigido para completar tus datos y realizar el pago.`)
+        if(confirmOrder){
+            console.log("saving order data") 
+            sendOrderData(userID, token)
+        } else {
+           console.log("buuuu") 
+        }
+    }
+
+    const sendOrderData = async (userID, token) => {
+        const total = cartTotal;
+        const itemNames = cart.map((item) => {
+           return item.name
+        });
+        const userId = userID;
+
+        const orderBody = {
+            items: itemNames,
+            total: total,
+            userId: userId
+        }
+        console.log(orderBody)
+        console.log(token)
+
+        const res = await createOrderReq(orderBody, token)
+        console.log(res)
     }
 
 

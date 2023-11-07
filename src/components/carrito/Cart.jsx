@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom'
 import "./cart.css";
 import MinusPlusDel from "../tienda/MinusPlusDel";
 import CartContext from "../../context/CartContext";
+import AuthContext from '../../context/AuthContext'
 
 export default function Cart() {
 
   const { cart, cartTotal, confirmOrder } = useContext(CartContext);
+  const { userID, token } = useContext(AuthContext)
 
   return (
     <>
@@ -56,7 +58,7 @@ export default function Cart() {
             <button
               className="btn btn-primary btn-purchase fw-bold"
               type="button"
-              onClick={(e) => confirmOrder(e)}
+              onClick={(e) => confirmOrder(e, userID, token)}
             >
               COMPRAR
             </button>

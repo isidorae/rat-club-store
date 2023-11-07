@@ -72,6 +72,7 @@ const AuthProvider = ({children}) => {
             setIsAuth(false)
             setToken("")
             navigate('/')
+            setUserID(null)
         } catch (error) {
             console.log(error)
         }
