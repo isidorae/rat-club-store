@@ -22,19 +22,15 @@ const showOrdersData = async (userID, token) => {
     userId: userID
   }
   const orders = await getUserOrdersReq(bodyReq, token);
-  console.log(orders)
   setOrders(orders.data.detail)
   setLoading(false)
 }
 
 //*********************** GET SINGLE ORDER */
 const showSingleOrder = async (id, token) => {
-  console.log(id, token)
-
   const singleOrder = await getSingleOrderReq(id, token)
   setDisplayAllOrders(false)
   setSingleOrder([singleOrder.data.order])
-  console.log(singleOrder.data.order)
 
 }
 
@@ -55,7 +51,7 @@ const showSingleOrder = async (id, token) => {
                  <a onClick={() => showSingleOrder(order._id, token)}>detalle</a>
                </div>
              </li>)
-            }) : <div>'Sin ordenes por el momento..' </div>)
+            }) : <div>Sin pedidos por el momento..</div>)
             )
             }
           </ul>

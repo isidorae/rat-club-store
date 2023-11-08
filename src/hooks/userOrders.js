@@ -17,8 +17,6 @@ export const getUserOrdersReq = (userid, token) => {
 }
 
 export const getSingleOrderReq = (id, token) => {
-    console.log(id)
-    console.log(token)
     return axios.get(`/user/order/${id}`, {
         headers: {
             'authorization': `Bearer ${token}`

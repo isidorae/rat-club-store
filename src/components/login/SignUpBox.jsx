@@ -53,7 +53,7 @@ export default function SignUpBox() {
             email,
             password
         }
-
+        console.log(newUser)
         signUp(newUser)
     }
 

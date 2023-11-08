@@ -40,7 +40,7 @@ const CartProvider = ({children}) => {
         setCart([...cart, product])
         handleQuantityChange(product._id, 1)
     }
-console.log(cart)
+
  //****** REMOVE *******/
     const removeFromCart = (id) => {
          //hide btn de agregar al carrito y mostrar +/-
@@ -114,7 +114,6 @@ console.log(cart)
 
             // multiply {quantity*price} = single itemTotal
             const singleItemTotal = price * quantity;
-            console.log("new single total: " + singleItemTotal)
 
             // cart total, sum all single itemTotals... 
             newTotal = newTotal + singleItemTotal;
@@ -131,6 +130,7 @@ console.log(cart)
     //****** CLICK ON 'COMPRAR' AT CART.JSX *******/
     const confirmOrder = (e, userID, token) => {
         e.preventDefault()
+        console.log(quantitySum)
         if (cart.length === 0 ) {
             confirm(`OOPS. Tu carrito esta vacío..`)
             return;
@@ -138,12 +138,19 @@ console.log(cart)
         const confirmOrder = confirm(`El total de tu compra es $${cartTotal}. Serás redirigido para completar tus datos y realizar el pago.`)
         if(confirmOrder){
             console.log("saving order data") 
+            console.log(quantitySum)
             sendOrderData(userID, token)
             setOrderSuccess(true)
-            setCart([])
+            resetCart()
         } else {
            console.log("buuuu") 
         }
+    }
+
+    //reset cart & array of quantities that was used to get quantitySum (navbar icon number)
+    const resetCart = () => {
+        setCart([])
+        setProductQuantity({})
     }
 
     const sendOrderData = async (userID, token) => {

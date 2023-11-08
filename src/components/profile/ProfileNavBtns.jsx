@@ -5,18 +5,15 @@ export default function ProfileNavBtns({setUserBtnState, setNutBtnState, setOrde
     e.preventDefault()
     console.log(e.target.id)
     if (e.target.id === "user"){
-      console.log(e.target.id)
       switchProfileSection(setUserBtnState)
       hideUnselectedSection(setNutBtnState, setOrdersBtnState)
     }
     if (e.target.id === "orders"){
-      console.log(e.target.id)
       switchProfileSection(setOrdersBtnState)
       hideUnselectedSection(setUserBtnState, setNutBtnState)
       setDisplayAllOrders(true)
     }
     if (e.target.id === "nut"){
-      console.log(e.target.id)
       switchProfileSection(setNutBtnState)
       hideUnselectedSection(setOrdersBtnState, setUserBtnState)
     }

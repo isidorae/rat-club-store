@@ -5,7 +5,6 @@ import ProductsPage from '../components/tienda/ProductsPage';
 export default function ProductCollection() {
 
     const { productCollection } = useParams()
-    console.log(productCollection)
 
     return(
         <>

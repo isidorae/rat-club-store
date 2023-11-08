@@ -25,7 +25,6 @@ function App() {
 
 const { signIn } = useContext(SignInContext)
 
-console.log(signIn)
   return (
     <>
     <AuthProvider>

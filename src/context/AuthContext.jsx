@@ -20,16 +20,19 @@ const AuthProvider = ({children}) => {
     //save token
     const [token, setToken] = useState("")
 
+    const navigate = useNavigate()
+
     // connected to SignUpBox.jsx
     const signUp = async (user) => {
         try {
             setUserLoading(true)
             const res = await registerUser(user)
-            setUserID(res.data.detail._id)
-            setToken(data.detail.token)
+            setUserID(res.data.detail.id)
+            setToken(res.data.detail.token)
             setUserLoading(false)
             setIsAuth(true)
             getUserData(res.data.detail.id, res.data.detail.token)
+            navigate('/myprofile')
         } catch (error) {
             console.log(error)
             setErrorMsgs([error.response.data.message])
@@ -61,8 +64,6 @@ const AuthProvider = ({children}) => {
         setLoggedUser(userData)
     }
 
-    const navigate = useNavigate()
-
     // connected to navbar logout button
     const logout = async () => {
         try {
@@ -81,17 +82,14 @@ const AuthProvider = ({children}) => {
 
     useEffect(() => {
         resetErrorMsgs()
-        console.log(errorMsgs)
     }, [errorMsgs])
 
 
     //clear LOGIN/SINGUP errors
     const resetErrorMsgs = () => {
         let timer;
-        console.log('not eliminado')
         if (errorMsgs.length > 0) {
             timer =  setTimeout(() => {
-                console.log('eliminado')
                 setErrorMsgs([])
             }, 5000)
         }
@@ -195,7 +193,6 @@ const AuthProvider = ({children}) => {
 
     const resetUpdateErrMsg = () => {
         let timer;
-        console.log(updateErrorMsg)
         if (updateErrorMsg.length > 0)
         {
             timer = setTimeout(() => {
