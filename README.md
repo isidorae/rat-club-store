@@ -27,4 +27,4 @@ NOTAS:
 
 *Debido a que API REST esta levantada en servidor gratuito de www.onrender.com, la primera petición puede tardar varios minutos en ejecutarse. Recomiendo primero abrir alguna sección de la API REST (https://ratclub.onrender.com/rat-club-api/v1/products/), esperar que cargue y luego probar la app. 
 
-*JWT inicialmente se almacenaba en una cookie en el frontend, pero al cambiar ruta de API de local a www.onrender.com, esto fue cambiado ya que el uso del dominio publico de 'onrender' no permite almacenar cookies en browser por temas de seguridad. 
+*JWT inicialmente se almacenaba en una cookie en el frontend, pero al cambiar ruta de API de local a www.onrender.com, esto fue cambiado ya que el uso del dominio publico de 'onrender.com' no permite almacenar cookies en browser por temas de seguridad. 

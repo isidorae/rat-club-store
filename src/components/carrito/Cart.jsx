@@ -7,12 +7,13 @@ import AuthContext from '../../context/AuthContext'
 
 export default function Cart() {
 
-  const { cart, cartTotal, confirmOrder } = useContext(CartContext);
+  const { cart, cartTotal, confirmOrder, orderSuccess } = useContext(CartContext);
   const { userID, token } = useContext(AuthContext)
 
   return (
     <>
       <div className="table-carrito-container">
+      {orderSuccess && <p className="buy-success-msg">Compra realizada con exito!</p>}
         <section className="container content-section">
           <h2 className="section-header pt-4">CARRITO</h2>
           <div className="cart-row">

@@ -18,14 +18,11 @@ export default function ProductsPage({productCollection}) {
     let loading;
 
     //Destructure data from different collections
-    // const { data: accessoryData, loading : loadAccessory } = axiosGetData("https://ratclub.onrender.com/rat-club-api/v1/products/collection/accesorios")
-    // const { data: foodData, loading: loadFood } = axiosGetData("https://ratclub.onrender.com/rat-club-api/v1/products/collection/alimentos")
-    // const { data: homeData, loading: loadHome } = axiosGetData("https://ratclub.onrender.com/rat-club-api/v1/products/collection/hogar")
-    // const { data: toysData, loading: loadToys} = axiosGetData("https://ratclub.onrender.com/rat-club-api/v1/products/collection/juguetes")
-    const { data: accessoryData, loading : loadAccessory } = axiosGetData("http://localhost:3002/rat-club-api/v1/products/collection/accesorios")
-    const { data: foodData, loading: loadFood } = axiosGetData("http://localhost:3002/rat-club-api/v1/products/collection/alimentos")
-    const { data: homeData, loading: loadHome } = axiosGetData("http://localhost:3002/rat-club-api/v1/products/collection/hogar")
-    const { data: toysData, loading: loadToys} = axiosGetData("http://localhost:3002/rat-club-api/v1/products/collection/juguetes")
+    const { data: accessoryData, loading : loadAccessory } = axiosGetData("/products/collection/accesorios")
+    const { data: foodData, loading: loadFood } = axiosGetData("/products/collection/alimentos")
+    const { data: homeData, loading: loadHome } = axiosGetData("/products/collection/hogar")
+    const { data: toysData, loading: loadToys} = axiosGetData("/products/collection/juguetes")
+    
     
 
     //check which collection to load data from, segun URL en que estemos

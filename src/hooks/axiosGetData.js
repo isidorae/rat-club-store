@@ -12,7 +12,8 @@ export function axiosGetData(url) {
 
     const getData = async () => {
         setLoading(true);
-        const response = await axios.get(url);
+        const response = await axios.get(`https://ratclub.onrender.com/rat-club-api/v1${url}`);
+        // const response = await axios.get(`http://localhost:3002/rat-club-api/v1${url}`);
         setData(response.data)
         setLoading(false);
         console.log(await response.data)

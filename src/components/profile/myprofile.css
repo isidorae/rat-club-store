@@ -1,5 +1,5 @@
 .profile-pg-container {
-    min-height: 80vh;
+    min-height: 60vh;
 }
 
 .profile-btn {
@@ -17,8 +17,8 @@
 
 .myprofile-info-container {
     max-width: 600px;
-    min-width: 400px;
-    height: 300px;
+    min-width: 340px;
+    min-height: 350px;
     border: medium solid white;
     border-radius: 10px;
     background-color: #7f36c4;

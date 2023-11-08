@@ -1,6 +1,6 @@
 import './myprofile.css'
 import { Link } from 'react-router-dom'
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import AuthContext from '../../context/AuthContext'
 
 import ProfileNavBtns from './profileNavBtns'
@@ -11,6 +11,8 @@ import MyProfileOrders from './MyProfileOrders'
 export default function MyProfile() {
 
     const { loggedUser } = useContext(AuthContext)
+
+    const [displayAllOrders, setDisplayAllOrders] = useState(true)
 
     const [userBtnState, setUserBtnState ] = useState(true)
     const [nutBtnState, setNutBtnState ] = useState(false)
@@ -24,6 +26,7 @@ export default function MyProfile() {
         setType(false)
         setTypeTwo(false)
     }
+
 
 
     return(
@@ -43,13 +46,16 @@ export default function MyProfile() {
                             setOrdersBtnState={setOrdersBtnState}
                             switchProfileSection={switchProfileSection}
                             hideUnselectedSection={hideUnselectedSection}
+                            setDisplayAllOrders={setDisplayAllOrders}
                             />
                 </section>
-                {userBtnState && <div className="mt-2 myprofile-info-container d-flex flex-column align-items-center">
+                {userBtnState && <div className="mt-2 myprofile-info-container d-flex flex-column justify-content-start align-items-center">
                 <MyProfileInfo user={loggedUser}/>
                 </div>}
                 {ordersBtnState && <div className="mt-2 myprofile-info-container d-flex flex-column justify-content-center align-items-center">
-                    <MyProfileOrders />
+                    <MyProfileOrders
+                    displayAllOrders={displayAllOrders}
+                    setDisplayAllOrders={setDisplayAllOrders}/>
                 </div>}
                 {nutBtnState && <div className="mt-2 editmyprofile-info-container d-flex flex-column justify-content-center align-items-center">
                     <EditProfileInfo />

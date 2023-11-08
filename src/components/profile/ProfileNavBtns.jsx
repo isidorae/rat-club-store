@@ -1,4 +1,4 @@
-export default function ProfileNavBtns({setUserBtnState, setNutBtnState, setOrdersBtnState, switchProfileSection, hideUnselectedSection}) {
+export default function ProfileNavBtns({setUserBtnState, setNutBtnState, setOrdersBtnState, switchProfileSection, hideUnselectedSection, setDisplayAllOrders}) {
 
   function switchSelection(e) {
 
@@ -13,6 +13,7 @@ export default function ProfileNavBtns({setUserBtnState, setNutBtnState, setOrde
       console.log(e.target.id)
       switchProfileSection(setOrdersBtnState)
       hideUnselectedSection(setUserBtnState, setNutBtnState)
+      setDisplayAllOrders(true)
     }
     if (e.target.id === "nut"){
       console.log(e.target.id)

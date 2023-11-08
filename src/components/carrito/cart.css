@@ -135,3 +135,16 @@
     color: #333;
     font-size: 1.1em;
 }
+
+.buy-success-msg {
+    background-color: rgb(138, 234, 138);
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    width: 15rem;
+    padding: 0.5rem;
+    text-align: center;
+    color: black;
+    border: 2px solid black;
+    border-radius: 4px;
+    font-weight: bold;
+}

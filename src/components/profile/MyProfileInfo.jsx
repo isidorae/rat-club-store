@@ -23,7 +23,7 @@ export default function MyProfileInfo({user}) {
     <>
       <section className="ms-4 mt-5 align-self-start">
         <div className="">
-          <h2>Información Básica</h2>
+          <h2>Tus Datos</h2>
         </div>
       </section>
       {loading

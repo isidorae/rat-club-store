@@ -21,6 +21,9 @@ const CartProvider = ({children}) => {
     // show Add To Cart Button
     const [showBtn, setShowBtn] = useState(true)
 
+    // buy success message
+    const [orderSuccess, setOrderSuccess] = useState(false)
+
     //************************************** FUNCTIONS **************************************/
     //****** ADD *******/
     const addToCart = (product) => {
@@ -121,6 +124,10 @@ console.log(cart)
         })
     }
 
+    useEffect(() => {
+        resetSuccessMsg()
+    }, [orderSuccess])
+
     //****** CLICK ON 'COMPRAR' AT CART.JSX *******/
     const confirmOrder = (e, userID, token) => {
         e.preventDefault()
@@ -132,6 +139,8 @@ console.log(cart)
         if(confirmOrder){
             console.log("saving order data") 
             sendOrderData(userID, token)
+            setOrderSuccess(true)
+            setCart([])
         } else {
            console.log("buuuu") 
         }
@@ -156,6 +165,17 @@ console.log(cart)
         console.log(res)
     }
 
+    const resetSuccessMsg = () => {
+        let timer;
+         if(orderSuccess)
+         {
+             timer = setTimeout(() => {
+                 setOrderSuccess(false)
+             }, 5000)
+         }
+         return () => clearTimeout(timer)
+         
+     }
 
     const data = {
         addToCart,
@@ -168,6 +188,7 @@ console.log(cart)
         confirmOrder,
         setShowBtn,
         showBtn,
+        orderSuccess
     }
 
     return(

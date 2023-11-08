@@ -61,7 +61,7 @@ export default function EditProfileInfo() {
             }) : null}
             {/* NAME */}
             <div className="py-2 d-flex flex-row border-top">
-              <div className="mb-0 ms-3 user-profile-data d-flex flex-row align-items-center">
+              <div className="mb-0 ms-3 user-profile-data d-flex flex-row justify-content-between align-items-center">
               {!editingName && 
               <EditProfileBtn
               displayEditFormat={displayEditFormat}
