@@ -7,7 +7,7 @@ import AuthContext from '../../context/AuthContext'
 
 export default function Cart() {
 
-  const { cart, cartTotal, confirmOrder, orderSuccess } = useContext(CartContext);
+  const { cart, cartTotal, goToCheckout, orderSuccess } = useContext(CartContext);
   const { userID, token } = useContext(AuthContext)
 
   return (
@@ -42,9 +42,9 @@ export default function Cart() {
                     </Link>
                     <span className="cart-item-title">{item.name}</span>
                   </div>
-                  <span className="cart-price cart-column">${item.price}</span>
+                  <span className="cart-price cart-column">${new Intl.NumberFormat().format(item.price)}</span>
                   <div className="cart-quantity cart-column">
-                    <MinusPlusDel itemid={item._id} />
+                    <MinusPlusDel item={item} />
                   </div>
                 </div>
               );
@@ -55,11 +55,11 @@ export default function Cart() {
           {/* ITEM A COMPRAR */}
           <div className="cart-total">
             <strong className="cart-total-title">Total</strong>
-            <span className="cart-total-price">${cart.length === 0 ? 0 : cartTotal}</span>
+            <span className="cart-total-price">${cart.length === 0 ? 0 : new Intl.NumberFormat().format(cartTotal)}</span>
             <button
               className="btn btn-primary btn-purchase fw-bold"
               type="button"
-              onClick={(e) => confirmOrder(e, userID, token)}
+              onClick={(e) => goToCheckout(e, userID, token)}
             >
               COMPRAR
             </button>

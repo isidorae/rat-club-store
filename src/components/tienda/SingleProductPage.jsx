@@ -9,8 +9,16 @@ import MinusPlusDel from "./MinusPlusDel";
 
 export default function SingleProductPage({ singleProductObj: data, productCollection, productID, loading}) {
 
-  const { addToCart, showBtn} = useContext(CartContext);
-
+  const { addToCart, showBtn, cart} = useContext(CartContext);
+  
+  const isItemInCart = cart.find((item) => {
+    console.log(item)
+    if (item._id === productID) {
+      return true
+    } else {
+      return false
+    }
+  })
 
   return (
     <div className="shadow-box-single-pg-layer">
@@ -41,20 +49,26 @@ export default function SingleProductPage({ singleProductObj: data, productColle
             <Col className="my-4 p-4 my-sm-0 single-prodcut-pg-descript d-flex flex-column align-items-center justify-content-center">
               <div className="">
                 <h2>{data.name}</h2>
-                <p>${data.price}</p>
+                <p>${new Intl.NumberFormat().format(data.price)}</p>
                 <p>
                  {data.description}
                 </p>
               </div>
               {/* add to cart button */}
               <div className="d-flex flex-row align-self-start my-2">
-                {showBtn
+                {!isItemInCart
                 ?  <div className="">
                   <button onClick={() => addToCart(data)}className="btn-single-page-add" variant="danger">
                     Añadir al carrito
                   </button>
                 </div>
-              :  <MinusPlusDel itemid={data._id} /> }
+                
+              :   cart.map((item, index)=> {
+                return item._id === data._id 
+                ? <MinusPlusDel key={index} item={item}/>
+                : null
+              })
+              }
               </div>
             </Col>
           </Row>

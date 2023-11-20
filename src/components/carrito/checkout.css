@@ -1,0 +1,25 @@
+.order-checkout-info {
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.checkout-page-btn {
+    width: 10rem;
+    background: linear-gradient(50deg, rgba(134,65,233,0.7) 0%, rgba(87,255,204,0.7) 63%, rgba(255,79,232,0.7) 89%);
+    color: white;
+    text-shadow: 0.15rem 0.2rem 0.5rem rgb(74, 46, 167);
+    padding: 0.3rem;
+    font-weight: bold;
+    border: 2.5px solid rgb(58, 59, 129);
+    border-radius: 0.8rem;
+    align-self: center;
+}
+
+
+.checkout-page-btn:hover {
+    background: linear-gradient(50deg, rgba(217, 185, 58, 0.7) 0%, rgba(70,66,254,0.7) 56%, rgba(57, 255, 103, 0.7) 100%);
+    border: 2.5px solid rgb(255, 111, 0);
+    color: rgb(78, 236, 102);
+    text-shadow: 0.15rem 0.1rem 0.1rem rgb(40, 24, 92);
+
+}

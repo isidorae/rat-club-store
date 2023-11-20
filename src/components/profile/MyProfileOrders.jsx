@@ -34,6 +34,8 @@ const showSingleOrder = async (id, token) => {
 
 }
 
+console.log(singleOrder)
+
     return(
         <>
       <section className="ms-4 mt-5 d-flex justify-content-start align-items-start">
@@ -63,14 +65,20 @@ const showSingleOrder = async (id, token) => {
             <a onClick={() => setDisplayAllOrders(true)}>Vovler a todos mis pedidos</a>
             <h2>Pedido #{(order._id).slice(16,23)}</h2>
             <div> 
-            <p className="m-0 me-3"><mark>pedido N#:</mark> {(order._id)}</p>
-            <p className="m-0 me-3 mt-2 d-flex flex-wrap align-items-center"><mark>items:</mark>  {(order.items.map((name, i) => {
+            <p className="m-0 me-3"><span style={{color:"aqua"}}>Destinatario:</span>  {order.receiver}</p>
+            <p className="m-0 me-3 mt-2 d-flex flex-column align-items-start"><span style={{color:"aqua"}}>Items:</span>{(order.items.map((item, i) => {
               return (
-                <span key={i} className="ms-1">{name}, </span>
+                <>
+                <span key={i} className="ms-1">{item}</span>
+                </>
               )
             }))}</p>
-            <p className="m-0 me-3 mt-2"><mark>valor total:</mark> ${order.total}</p>
-            <p className="m-0 me-3 mt-2"><mark>fecha de compra:</mark> {(order.createdAt).slice(0,10)}</p>
+            <p className="m-0 me-3 mt-2"><span style={{color:"aqua"}}>Valor total:</span> ${new Intl.NumberFormat().format(order.total)}</p>
+            <p className="m-0 me-3 mt-2"><span style={{color:"aqua"}}>Dirección:</span> {order.address}</p>
+            {order.extra === "" 
+            ? null
+            : <p className="m-0 me-3 mt-2"><span style={{color:"aqua"}}>Info Extra entrega:</span> {order.extra}</p>}
+            <p className="m-0 me-3 mt-2"><span style={{color:"aqua"}}>Fecha de compra:</span> {(order.createdAt).slice(0,10)}</p>
             </div>
           </section>)
 

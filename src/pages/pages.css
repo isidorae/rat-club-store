@@ -17,3 +17,14 @@ body {
     left: 30px;
     top: 10px;
 }
+
+.checkout-page{
+    border-top: medium solid purple;
+    border-top: thin solid var(--border-pink);
+    box-shadow: 0rem 0.05rem 0.8rem var(--lighter-pink);
+}
+
+.checkout-container-data {
+    border: 2px solid white;
+    border-radius: 10px;
+}

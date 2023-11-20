@@ -1,22 +1,24 @@
-import { createContext, useState, useEffect } from "react"
+import { createContext, useState, useEffect, useReducer } from "react"
+import { useNavigate } from "react-router-dom";
 import { createOrderReq } from "../hooks/userOrders";
+import { ACTIONS } from "./cartActions";
+import { cartReducer, cartInitialState } from "./cartReducer";
 
 const CartContext = createContext()
 
 const CartProvider = ({children}) => {
 
     //************************************** VARIABLES **************************************/
-    // elementos en carrito
-    const [cart, setCart] = useState([]);
+
+    const [state, dispatch] = useReducer(cartReducer, cartInitialState)
+
+    const { cart } = state
 
     // $valor total de carrito
     const [cartTotal, setCartTotal] = useState(0)
 
-    // cantidad de mismo producto en carrito {id: quantity, id-2: quantity... }
-    const [productQuantity, setProductQuantity] = useState({})
-
     // productos totales en carrito
-    const[quantitySum, setQuantitySum] = useState(0)
+    const[navBarItemQuantity, setNavBarItemQuantity] = useState(0)
 
     // show Add To Cart Button
     const [showBtn, setShowBtn] = useState(true)
@@ -24,72 +26,55 @@ const CartProvider = ({children}) => {
     // buy success message
     const [orderSuccess, setOrderSuccess] = useState(false)
 
+    const navigate = useNavigate()
+
     //************************************** FUNCTIONS **************************************/
     //****** ADD *******/
     const addToCart = (product) => {
-        // evitar añadir duplicados
-        for (let i = 0; i < cart.length; i++) {
-            if (product.name === cart[i].name){
-                alert("Producto ya esta en el carrito")
-                return;
-            }
-        }
-        //hide btn de agregar al carrito y mostrar +/-
+        dispatch({type: ACTIONS.ADD_TO_CART, payload: product})
         setShowBtn(false)
-        // setCart con producto
-        setCart([...cart, product])
-        handleQuantityChange(product._id, 1)
     }
 
  //****** REMOVE *******/
     const removeFromCart = (id) => {
-         //hide btn de agregar al carrito y mostrar +/-
-         setShowBtn(true)
-        // crear nuevo array con productos que se mantienen en cart. 
-        const newCart = cart.filter(item => id != item._id)
-        // setCart con array filtrado
-        setCart(newCart)
-        // actualizar quantity a 0;
-        handleQuantityChange(id, 0)
+        dispatch({type: ACTIONS.REMOVE_ITEM_FROM_CART, payload: id})
+        setShowBtn(true)
     }
 
  //****** UPDATE NUM OF PRODUCTS IN NAV BAR CART ICON  && TOTAL CART *******/
     useEffect(()=> {
-
+        console.log(cart)
         countTotalProductsInCart()
         updateTotalCart()
         // checkIfItemIsInCart()
+        const itemNamesAndQuantity = cart.map((item) => {
+            let data = {product: item.name + item.quantity}
+            return data
+        });
+        console.log(itemNamesAndQuantity)
         
-    },[cart, productQuantity])
+    },[cart])
 
 
- //****** STORE QUANTITY OF ITEM ADDED TO CART *******/
-    const handleQuantityChange = (productID, newQuantity) => {
-        // setProductQuantity
-        setProductQuantity((prevState) => (
-             {
-                ...prevState,
-                [productID]: newQuantity
-             }
-        ))
+
+    const increaseItemQuantity = (item) => {
+        dispatch({type: ACTIONS.ADD_ONE_QUANTITY, payload: item})
     }
 
- //****** CREATE ARRAY OF QUANTITIES OF EACH ITEM *******/   
-    // array of products(id: quantity) with quantities [[id, value], [id, value]...]
-    const arrayOfQuantities =  Object.entries(productQuantity)
+    const reduceItemQuantity = (item) => {
+        dispatch({type: ACTIONS.REDUCE_ONE_QUANTITY, payload: item})
+    }
 
   //****** SUM OF ITEMS FOR NAV BAR ICON *******/
     const countTotalProductsInCart = () => {
 
-        let sum = 0;
-        // transformamos values de obj en array , para poder sumarlos 
-        let productsInCart = Object.values(productQuantity);
-        //sum and store sum in 'QuantitySum'
-        productsInCart.forEach(num => {
-            sum += num
-            return sum
-        })
-        setQuantitySum(sum)
+        let count = 0;
+        for (let i = 0; i < cart.length; i++) {
+            let productQuantity = cart[i].quantity
+            count += productQuantity
+        }
+
+        setNavBarItemQuantity(count)
     }
 
 
@@ -97,27 +82,17 @@ const CartProvider = ({children}) => {
     const updateTotalCart = () => {
 
         let newTotal = 0;
-        let quantity = 0;
 
         cart.forEach(item => {
 
-            // each item has a quantity.. loop through arr of quantities to find item quantity
-            for (let i = 0; i < arrayOfQuantities.length; i++)
-            {
-                if(arrayOfQuantities[i][0] == item._id){
-                    quantity = arrayOfQuantities[i][1];
-                }
-            };
-
-            // each item has a price
-            const price = item.price;
+            let quantity = item.quantity
+            let price = item.price;
 
             // multiply {quantity*price} = single itemTotal
             const singleItemTotal = price * quantity;
 
             // cart total, sum all single itemTotals... 
             newTotal = newTotal + singleItemTotal;
-
             setCartTotal(newTotal)
         
         })
@@ -128,49 +103,67 @@ const CartProvider = ({children}) => {
     }, [orderSuccess])
 
     //****** CLICK ON 'COMPRAR' AT CART.JSX *******/
-    const confirmOrder = (e, userID, token) => {
+    const goToCheckout = (e) => {
         e.preventDefault()
-        console.log(quantitySum)
         if (cart.length === 0 ) {
             confirm(`OOPS. Tu carrito esta vacío..`)
             return;
         }
-        const confirmOrder = confirm(`El total de tu compra es $${cartTotal}. Serás redirigido para completar tus datos y realizar el pago.`)
+        const confirmOrder = confirm(`El total de tu compra es $${new Intl.NumberFormat().format(cartTotal)}. Serás redirigido para completar tus datos y realizar el pago.`)
         if(confirmOrder){
-            console.log("saving order data") 
-            console.log(quantitySum)
-            sendOrderData(userID, token)
-            setOrderSuccess(true)
-            resetCart()
+            console.log("go to checkout") 
+            navigate('/checkout')
         } else {
            console.log("buuuu") 
         }
     }
 
-    //reset cart & array of quantities that was used to get quantitySum (navbar icon number)
-    const resetCart = () => {
-        setCart([])
-        setProductQuantity({})
+    const confirmOrder = (userID, token, deliveryData) => { 
+        sendOrderData(userID, token, deliveryData)
     }
 
-    const sendOrderData = async (userID, token) => {
-        const total = cartTotal;
-        const itemNames = cart.map((item) => {
-           return item.name
+    //reset cart & array of quantities that was used to get quantitySum (navbar icon number)
+    const resetCart = () => {
+        dispatch({type: ACTIONS.CLEAR_CART})
+    }
+
+    const sendOrderData = async (userID, token, deliveryData) => {
+        console.log(deliveryData)
+        //Data to be saved in MONGO
+        const total = cartTotal
+
+        const itemNamesAndQuantity = cart.map((item) => {
+            let quantityData = item.quantity.toString()
+            let data = `${item.name} (${quantityData})`
+            return data
         });
         const userId = userID;
 
+        const {nombre, apellido, comuna, direccion, extra} = deliveryData
+        console.log(deliveryData)
+        const fullName = `${nombre} ${apellido}`
+        const address = `${direccion}, ${comuna}`
+        const addressData = `${extra}`
+
         const orderBody = {
-            items: itemNames,
+            items: itemNamesAndQuantity,
             total: total,
-            userId: userId
+            userId: userId,
+            receiver: fullName,
+            address: address,
+            extra: addressData
         }
         console.log(orderBody)
         console.log(token)
 
+        //save data in mongo
         const res = await createOrderReq(orderBody, token)
+        resetCart()
+        setOrderSuccess(true)
         console.log(res)
+        //reset cart
     }
+
 
     const resetSuccessMsg = () => {
         let timer;
@@ -178,7 +171,8 @@ const CartProvider = ({children}) => {
          {
              timer = setTimeout(() => {
                  setOrderSuccess(false)
-             }, 5000)
+                 navigate('/myprofile')
+             }, 10000)
          }
          return () => clearTimeout(timer)
          
@@ -188,13 +182,15 @@ const CartProvider = ({children}) => {
         addToCart,
         cart,
         removeFromCart,
-        handleQuantityChange,
-        quantitySum,
-        arrayOfQuantities,
+        increaseItemQuantity,
+        reduceItemQuantity,
+        navBarItemQuantity,
         cartTotal,
-        confirmOrder,
         setShowBtn,
+        goToCheckout,
         showBtn,
+        confirmOrder,
+        setOrderSuccess,
         orderSuccess
     }
 

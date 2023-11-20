@@ -14,6 +14,7 @@ import LoginPage from './pages/LoginPage'
 import UserProfile from './pages/UserProfile'
 import CartPage from './pages/CartPage';
 import SignUp from './pages/SignUp';
+import CheckoutPage from './pages/CheckoutPage';
 
 import { useContext } from "react";
 import SignInContext from './context/SignInContext'
@@ -46,6 +47,7 @@ const { signIn } = useContext(SignInContext)
       <Route path='/store/:productCollection' element={< ProductCollection />}></Route>
       <Route path='/product/:productCollection/:productID' element={< Product/>}></Route>
       <Route path='/carrito' element={< CartPage/>}></Route>
+      <Route path='/checkout' element={< CheckoutPage/>}></Route>
       <Route path='/myprofile' element={< UserProfile/>}></Route>
       <Route path='/*' element={< Navigate to='/'/>} ></Route>
     </Routes>

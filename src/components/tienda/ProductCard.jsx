@@ -19,7 +19,7 @@ export default function ProductCard({loading, data, productCollection, addToCart
                  <Link as={Link} to={`/product/${productCollection}/${item._id}`}><Card.Img variant="top" src={item.img}  /></Link>
                  <Card.Body className="d-flex flex-column align-items-center">
                      <Card.Title className="text-center">{item.name}</Card.Title>
-                     <Card.Text>${item.price}</Card.Text>
+                     <Card.Text>${new Intl.NumberFormat().format(item.price)}</Card.Text>
                      <button onClick={() => addToCart(item)} className="btn-item-add" variant="primary">Agregar</button>
                  </Card.Body>
                  </Card>

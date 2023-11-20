@@ -35,7 +35,7 @@ export default function MyProfile() {
             <section className="breadcrumb">
                 <nav>
                     <Link as={Link} to='/'>inicio / </Link>
-                    <Link as={Link} to='/'>{loggedUser ? `perfil de ${loggedUser.username}` : <i>..loading</i> }</Link>
+                    <Link as={Link} to='/myprofile'>{loggedUser ? `perfil de ${loggedUser.username}` : <i>..loading</i> }</Link>
                 </nav>
             </section>
             <div className="d-flex flex-column justify-content-center align-items-center">
@@ -52,7 +52,7 @@ export default function MyProfile() {
                 {userBtnState && <div className="mt-2 myprofile-info-container d-flex flex-column justify-content-start align-items-center">
                 <MyProfileInfo user={loggedUser}/>
                 </div>}
-                {ordersBtnState && <div className="mt-2 myprofile-info-container d-flex flex-column justify-content-center align-items-center">
+                {ordersBtnState && <div className="mt-2 myprofile-info-orders-container d-flex flex-column justify-content-center align-items-center">
                     <MyProfileOrders
                     displayAllOrders={displayAllOrders}
                     setDisplayAllOrders={setDisplayAllOrders}/>
