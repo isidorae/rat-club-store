@@ -15,7 +15,6 @@ const SignInProvider = ({children}) => {
     }
 
     const goToSignInHomePage = () => {
-        // e.preventDefault()
         setSignIn(true)
     }
 

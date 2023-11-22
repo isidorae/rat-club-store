@@ -96,26 +96,6 @@ const AuthProvider = ({children}) => {
        return () => clearTimeout(timer)
     }
 
-    // useEffect(() => {
-    //     getCookies()
-    //     console.log(loggedUser)
-    // }, [])
-
-
-    // const getCookies = async () => {
-    //     const cookies = Cookies.get()
-    //     console.log(cookies)
-
-    //     if(cookies.token){
-    //         console.log(cookies.token)
-    //         const res = await getUserDataReq();
-    //         console.log(res.data)
-    //         setLoggedUser(res.data)
-    //         setIsAuth(true)
-    //     }
-    // }
-
-
     //**************** update successful msg */
     const [ updateSuccess, setUpdateSuccess ] = useState(false)
     //**************** update error msg */

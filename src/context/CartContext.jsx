@@ -1,8 +1,8 @@
 import { createContext, useState, useEffect, useReducer } from "react"
 import { useNavigate } from "react-router-dom";
 import { createOrderReq } from "../hooks/userOrders";
-import { ACTIONS } from "./cartActions";
-import { cartReducer, cartInitialState } from "./cartReducer";
+import { ACTIONS } from "../reducers/cartActions";
+import { cartReducer, cartInitialState } from "../reducers/cartReducer";
 
 const CartContext = createContext()
 
@@ -23,12 +23,15 @@ const CartProvider = ({children}) => {
     // show Add To Cart Button
     const [showBtn, setShowBtn] = useState(true)
 
-    // buy success message
+    // ORDER success message (order sent)
     const [orderSuccess, setOrderSuccess] = useState(false)
+
+    // ORDER error msg (sending Order to backend)
+    const [errorMsgs, setErrorMsgs] = useState([])
 
     const navigate = useNavigate()
 
-    //************************************** FUNCTIONS **************************************/
+     //************************************************************* CART FUNCTIONS *************************************************************/
     //****** ADD *******/
     const addToCart = (product) => {
         dispatch({type: ACTIONS.ADD_TO_CART, payload: product})
@@ -43,7 +46,6 @@ const CartProvider = ({children}) => {
 
  //****** UPDATE NUM OF PRODUCTS IN NAV BAR CART ICON  && TOTAL CART *******/
     useEffect(()=> {
-        console.log(cart)
         countTotalProductsInCart()
         updateTotalCart()
         // checkIfItemIsInCart()
@@ -54,8 +56,6 @@ const CartProvider = ({children}) => {
         console.log(itemNamesAndQuantity)
         
     },[cart])
-
-
 
     const increaseItemQuantity = (item) => {
         dispatch({type: ACTIONS.ADD_ONE_QUANTITY, payload: item})
@@ -77,7 +77,6 @@ const CartProvider = ({children}) => {
         setNavBarItemQuantity(count)
     }
 
-
   //****** SUM OF $ITEMS * QUANTITY OF EACH  *******/
     const updateTotalCart = () => {
 
@@ -98,9 +97,15 @@ const CartProvider = ({children}) => {
         })
     }
 
+    //************************************************************* CHECKOUT *************************************************************/
+
     useEffect(() => {
         resetSuccessMsg()
     }, [orderSuccess])
+
+    useEffect(() => {
+        resetErrorMsgs()
+    }, [errorMsgs])
 
     //****** CLICK ON 'COMPRAR' AT CART.JSX *******/
     const goToCheckout = (e) => {
@@ -128,7 +133,6 @@ const CartProvider = ({children}) => {
     }
 
     const sendOrderData = async (userID, token, deliveryData) => {
-        console.log(deliveryData)
         //Data to be saved in MONGO
         const total = cartTotal
 
@@ -139,7 +143,16 @@ const CartProvider = ({children}) => {
         });
         const userId = userID;
 
-        const {nombre, apellido, comuna, direccion, extra} = deliveryData
+        const {nombre, apellido, region, comuna, direccion, extra} = deliveryData
+
+        if (nombre.length < 2 || apellido.length < 2) {
+            return setErrorMsgs([...errorMsgs, ["Debes rellenar nombre y apellido."]])
+        }
+
+        if (comuna.length < 3 || direccion.length < 3) {
+            return setErrorMsgs([...errorMsgs, ["Debes rellenar dirección y comuna."]])
+        }
+
         console.log(deliveryData)
         const fullName = `${nombre} ${apellido}`
         const address = `${direccion}, ${comuna}`
@@ -149,20 +162,27 @@ const CartProvider = ({children}) => {
             items: itemNamesAndQuantity,
             total: total,
             userId: userId,
+            region: region,
             receiver: fullName,
             address: address,
             extra: addressData
         }
         console.log(orderBody)
-        console.log(token)
 
         //save data in mongo
-        const res = await createOrderReq(orderBody, token)
-        resetCart()
-        setOrderSuccess(true)
-        console.log(res)
-        //reset cart
+        try {
+            const res = await createOrderReq(orderBody, token)
+            resetCart()
+            setOrderSuccess(true)
+            console.log(res)
+        } catch (error) {
+            console.log(error)
+            console.log(error.response.data.message)
+            setErrorMsgs([...errorMsgs, [error.response.data.message]])
+        }
+
     }
+
 
 
     const resetSuccessMsg = () => {
@@ -178,6 +198,17 @@ const CartProvider = ({children}) => {
          
      }
 
+    //clear checkout form error
+    const resetErrorMsgs = () => {
+        let timer;
+        if (errorMsgs.length > 0) {
+            timer =  setTimeout(() => {
+                setErrorMsgs([])
+            }, 5000)
+        }
+       return () => clearTimeout(timer)
+    }
+
     const data = {
         addToCart,
         cart,
@@ -191,7 +222,9 @@ const CartProvider = ({children}) => {
         showBtn,
         confirmOrder,
         setOrderSuccess,
-        orderSuccess
+        orderSuccess,
+        errorMsgs,
+        setErrorMsgs
     }
 
     return(

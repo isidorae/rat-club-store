@@ -1,11 +1,26 @@
+import { useState} from 'react'
 import ContactForm from "./ContactForm"
 import './contactpg.css'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { saveFormDBreq } from '../../hooks/sendForm'
 
 export default function Contacto() {
 
+    const [ loading, setLoading] = useState(false)
+    const [success, setSuccess] = useState(false)
+
+    const getFormData = async (data) => {
+        try {
+            const res = await saveFormDBreq(data)
+            setLoading(false)
+            console.log(res)
+            setSuccess(true)
+        } catch(error) {
+
+        }
+    }
 
     return(
         <>
@@ -14,7 +29,13 @@ export default function Contacto() {
             <Container>
                 <Row>
                     <Col className="order-1 order-md-0 mb-5">
-                        <ContactForm/>
+                        <ContactForm
+                        getFormData={getFormData}
+                        loading={loading}
+                        setLoading={setLoading}
+                        success={success}
+                        setSuccess={setSuccess}
+                        />
                     </Col>
                     <Col className="d-flex align-items-center justify-content-center justify-content-md-start">
                         <div className="m-5 contact-pg-info d-flex flex-column align-items-center justify-content-center">

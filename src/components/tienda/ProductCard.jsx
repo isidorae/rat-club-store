@@ -1,13 +1,8 @@
 import Col from "react-bootstrap/Col";
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 
-import MinusPlusDel from "./MinusPlusDel";
-
-
 export default function ProductCard({loading, data, productCollection, addToCart}) {
-
 
     return(
         <>
@@ -29,5 +24,4 @@ export default function ProductCard({loading, data, productCollection, addToCart
         </Col>
         </>
     )
-
 }

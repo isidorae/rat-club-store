@@ -42,8 +42,6 @@ export default function LoginBox() {
 
         //enviar data a function login de auth context
         login(user)
-
-        console.log(user)
     }
 
     return(

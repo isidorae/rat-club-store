@@ -62,7 +62,7 @@ console.log(singleOrder)
           return(
           
           <section key={index}>
-            <a onClick={() => setDisplayAllOrders(true)}>Vovler a todos mis pedidos</a>
+            <a onClick={() => setDisplayAllOrders(true)}>Volver a todos mis pedidos</a>
             <h2>Pedido #{(order._id).slice(16,23)}</h2>
             <div> 
             <p className="m-0 me-3"><span style={{color:"aqua"}}>Destinatario:</span>  {order.receiver}</p>
@@ -74,6 +74,7 @@ console.log(singleOrder)
               )
             }))}</p>
             <p className="m-0 me-3 mt-2"><span style={{color:"aqua"}}>Valor total:</span> ${new Intl.NumberFormat().format(order.total)}</p>
+            <p className="m-0 me-3 mt-2"><span style={{color:"aqua"}}>Región:</span> {order.region}</p>
             <p className="m-0 me-3 mt-2"><span style={{color:"aqua"}}>Dirección:</span> {order.address}</p>
             {order.extra === "" 
             ? null
