@@ -1,16 +1,25 @@
 import Checkout from "../components/carrito/Checkout"
 import CartContext from "../context/CartContext"
-import { useContext, useEffect, useState} from 'react'
+import SignInContext from "../context/SignInContext"
+import AuthContext from "../context/AuthContext"
+import { useContext, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 
 export default function CheckoutPage() {
 
 
-    const {cart, orderSuccess, setOrderSuccess} = useContext(CartContext)
+    const { cart, orderSuccess } = useContext(CartContext)
+    const { setSignIn } = useContext(SignInContext)
+    const { isAuth } = useContext(AuthContext)
 
     const navigate = useNavigate()
     
     useEffect(() => {
+
+        if (!isAuth) {
+            setSignIn(true);
+            navigate('/')
+        }
     
         if(cart.length <= 0){
             navigate('/')
