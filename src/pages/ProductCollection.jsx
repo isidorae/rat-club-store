@@ -1,7 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import ProductsPage from '../components/tienda/ProductsPage';
 
-
 export default function ProductCollection() {
 
     const { productCollection } = useParams()

@@ -1,5 +1,5 @@
-import Cookies from 'js-cookie'
-import { createContext, useState, useEffect } from 'react'
+// import Cookies from 'js-cookie'
+import { createContext, useState, useEffect, useReducer } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { registerUser, loginUser, logoutRequest, getUserDataReq, updateUserDataReq, updateUserPassReq, updateUserEmailReq } from '../hooks/authUser'
 
@@ -65,15 +65,17 @@ const AuthProvider = ({children}) => {
     }
 
     // connected to navbar logout button
-    const logout = async () => {
+    const logout = async (data, token) => {
         try {
             console.log('logout')
-            logoutRequest()
-            setLoggedUser(null)
-            setIsAuth(false)
-            setToken("")
-            navigate('/')
-            setUserID(null)
+            const res = await logoutRequest(data, token)
+            if (await res) {
+                setLoggedUser(null)
+                setIsAuth(false)
+                setToken("")
+                navigate('/')
+                return setUserID(null)
+            }
         } catch (error) {
             console.log(error)
         }

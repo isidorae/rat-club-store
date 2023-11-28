@@ -8,8 +8,12 @@ export const loginUser = (user) => {
     return axios.post(`/users/login`, user)
 }
 
-export const logoutRequest = () => {
-    return axios.post(`/users/logout`)
+export const logoutRequest = (data, token) => {
+    return axios.post(`/users/logout`, data, {
+        headers: {
+            'authorization': `Bearer ${token}`
+        }
+    })
 }
 
 //************** get loggedUserData

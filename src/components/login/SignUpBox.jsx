@@ -12,6 +12,7 @@ export default function SignUpBox() {
     const { returnToHomePage, setSignIn } = useContext(SignInContext)
     const { signUp, isAuth, errorMsgs, setErrorMsgs, userLoading} = useContext(AuthContext)
 
+
     //inicializar navigate
     const navigate = useNavigate()
 
@@ -74,9 +75,9 @@ export default function SignUpBox() {
             }
             <section>
                 <label><p className="m-0">Nombre</p></label><br />
-                <input  value={name.toLowerCase()}  onChange={(e) => updateValue(e, setName)} className="signin-input" type="name" name="name" placeholder="nombre" />{name.length > 3 ? <span>✅</span> : null}<br />
+                <input  value={name}  onChange={(e) => updateValue(e, setName)} className="signin-input" type="name" name="name" placeholder="nombre" />{name.length > 3 ? <span>✅</span> : null}<br />
                 <label className="mt-1"><p className="m-0">Apellido</p></label><br />
-                <input value={lastName.toLowerCase()} onChange={(e) => updateValue(e, setLastName)} className="signin-input" type="name" placeholder="apellido" />{lastName.length > 2 ? <span>✅</span> : null}<br />
+                <input value={lastName} onChange={(e) => updateValue(e, setLastName)} className="signin-input" type="name" placeholder="apellido" />{lastName.length > 2 ? <span>✅</span> : null}<br />
                 <label className="mt-1"><p className="m-0">Nombre de Usuario</p></label><br />
                 <input value={username.toLowerCase()} onChange={(e) => updateValue(e, setUsername)} className="signin-input" type="name" placeholder="nombre de usuario" />{username.length > 3 ? <span>✅</span> : null}<br />
                 <label className="mt-1"><p className="m-0">Email</p></label><br />
